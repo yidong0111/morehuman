@@ -1,0 +1,1623 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>More Human 予習ノート</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+/* Layout: a study sheet. In chunk view each sentence is a row of meaning chunks —
+   English on top, a Japanese gloss underneath, in English word order. Plain view is English only. */
+:root {
+  --paper: #F3F5F6;
+  --surface: #FFFFFF;
+  --ink: #141C28;
+  --ink-2: #4B5769;
+  --ink-3: #848FA0;
+  --rule: #DCE1E7;
+  --accent: #2447C9;
+  --accent-soft: #E3E8FA;
+  --gloss: #FFF3C4;
+  --gloss-ink: #5A4300;
+  --spk1: #0C7A72;
+  --spk2: #8A3FA0;
+  --shadow: 0 10px 34px rgba(20, 28, 40, .16);
+  --f-read: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --f-ui: "IBM Plex Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --en-size: 1.15rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1319; --surface: #151C25; --ink: #E7EBF1; --ink-2: #A5B0BF; --ink-3: #6E798A; --rule: #253041;
+    --accent: #8CA3FF; --accent-soft: #1C284A;
+    --gloss: #3A3110; --gloss-ink: #FBE7A1; --spk1: #4CC2B6; --spk2: #CB97DE;
+    --shadow: 0 10px 34px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1319; --surface: #151C25; --ink: #E7EBF1; --ink-2: #A5B0BF; --ink-3: #6E798A; --rule: #253041;
+  --accent: #8CA3FF; --accent-soft: #1C284A;
+  --gloss: #3A3110; --gloss-ink: #FBE7A1; --spk1: #4CC2B6; --spk2: #CB97DE;
+  --shadow: 0 10px 34px rgba(0, 0, 0, .5);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--paper); color: var(--ink); font-family: var(--f-ui); font-size: .9375rem; line-height: 1.65; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 40; background: var(--surface); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap {
+  max-width: 820px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* header */
+.head { padding-block: 32px 22px; display: grid; gap: 10px; }
+.eyebrow { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .08em; color: var(--ink-3); }
+h1 { margin: 0; font-family: var(--f-read); font-weight: 500; font-size: 2.1rem; line-height: 1.15; text-wrap: balance; letter-spacing: -.01em; }
+@media (max-width: 520px) { h1 { font-size: 1.7rem; } }
+.lead { margin: 0; color: var(--ink-2); max-width: 62ch; }
+.people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px; }
+@media (max-width: 560px) { .people { grid-template-columns: minmax(0, 1fr); } }
+.person { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: baseline; padding: 12px 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
+.person b { font-family: var(--f-read); font-weight: 500; font-size: 1.05rem; }
+.person span.role { grid-column: 2; font-size: .8125rem; color: var(--ink-2); }
+.spk { font-family: var(--f-mono); font-size: .75rem; font-weight: 500; letter-spacing: .06em; padding: 0 6px; border-radius: 4px; border: 1px solid currentColor; line-height: 1.6; }
+.spk.s1 { color: var(--spk1); } .spk.s2 { color: var(--spk2); }
+
+.howto { margin: 6px 0 0; padding: 14px 16px; border-radius: 10px; background: var(--accent-soft); display: grid; gap: 8px; }
+.howto h2 { margin: 0; font-size: .9375rem; font-weight: 600; }
+.howto ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; font-size: .875rem; }
+
+/* toolbar */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--surface); border-bottom: 1px solid var(--rule);
+}
+.bar-in { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-block: 10px; }
+.seg { display: inline-flex; flex-wrap: wrap; background: var(--paper); border: 1px solid var(--rule); border-radius: 9px; padding: 3px; gap: 2px; }
+.seg button { border: 0; background: none; padding: 5px 12px; border-radius: 6px; font-size: .875rem; color: var(--ink-2); white-space: nowrap; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); font-weight: 500; }
+.seg button small { font-family: var(--f-mono); font-size: .6875rem; opacity: .75; margin-left: 4px; }
+.switch { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); background: var(--paper); border-radius: 9px; padding: 6px 12px; font-size: .875rem; }
+.switch[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.switch .dot { width: 26px; height: 15px; border-radius: 8px; background: var(--rule); position: relative; flex: none; }
+.switch .dot::after { content: ""; position: absolute; top: 2px; left: 2px; width: 11px; height: 11px; border-radius: 50%; background: var(--surface); transition: transform .15s; }
+.switch[aria-pressed="true"] .dot { background: var(--accent); }
+.switch[aria-pressed="true"] .dot::after { transform: translateX(11px); }
+.partnav { display: inline-flex; align-items: center; gap: 4px; }
+.partnav select { font: inherit; font-size: .875rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 9px; padding: 6px 8px; max-width: 13.5rem; }
+.pn-btn { width: 32px; height: 32px; border: 1px solid var(--rule); background: var(--paper); border-radius: 8px; font-size: 1.15rem; line-height: 1; color: var(--ink-2); display: grid; place-items: center; padding: 0; }
+.pn-btn:disabled { opacity: .35; cursor: default; }
+.btn-next { justify-self: start; border: 1px solid var(--accent); color: var(--accent); background: var(--surface); border-radius: 10px; padding: 10px 16px; font-size: .9375rem; margin-top: 6px; }
+.btn-next:hover { background: var(--accent-soft); }
+.small-btn { border: 0; background: none; padding: 4px 2px; font-size: .8125rem; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* paragraphs */
+main { padding-block: 8px 40px; }
+.part-title { margin: 26px 0 0; font-family: var(--f-mono); font-size: .8125rem; letter-spacing: .06em; color: var(--ink-3); font-weight: 400; }
+.para { padding-block: 28px; border-bottom: 1px solid var(--rule); display: grid; gap: 16px; }
+.para-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ts { font-family: var(--f-mono); font-size: .8125rem; color: var(--ink-3); }
+.gist { margin: 0; font-size: .9375rem; color: var(--ink); padding-left: 12px; border-left: 3px solid var(--accent); max-width: 64ch; }
+.gist small { display: block; font-size: .75rem; color: var(--ink-3); letter-spacing: .06em; }
+
+.sents { display: grid; gap: 18px; }
+.sent { display: grid; gap: 6px; }
+.chunks { display: flex; flex-wrap: wrap; row-gap: 10px; }
+.ck {
+  display: inline-flex; flex-direction: column; gap: 2px; max-width: 100%; min-width: 0;
+  padding: 2px 12px 2px 0; margin-right: 10px; border-right: 1px solid var(--rule);
+}
+.ck:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.ck .en { font-family: var(--f-read); font-size: var(--en-size); line-height: 1.4; color: var(--ink); }
+.ck .ja { font-size: .8125rem; line-height: 1.45; color: var(--ink-2); }
+body.hide-ja .ck { cursor: pointer; }
+body.hide-ja .ck .ja { color: transparent; background: var(--paper); border-radius: 3px; user-select: none; -webkit-user-select: none; }
+body.hide-ja .ck:hover .ja { background: var(--accent-soft); }
+body.hide-ja .ck.open .ja { color: var(--ink-2); background: none; user-select: auto; -webkit-user-select: auto; }
+.term { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 4px; cursor: pointer; border-radius: 2px; }
+.term:hover { background: var(--accent-soft); }
+.note { margin: 0; font-size: .8125rem; color: var(--gloss-ink); background: var(--gloss); border-radius: 6px; padding: 7px 10px; max-width: 66ch; }
+.note b { font-weight: 600; }
+
+.plain { margin: 0; font-family: var(--f-read); font-size: 1.25rem; line-height: 1.8; max-width: 66ch; }
+
+.terms { display: grid; gap: 8px; }
+.terms-box .term-list { padding: 0 14px 12px; }
+.term-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 18px; }
+@media (max-width: 600px) { .term-list { grid-template-columns: minmax(0, 1fr); } }
+.term-item { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--rule); }
+.term-item .t { font-family: var(--f-read); font-size: 1.05rem; font-weight: 500; }
+.term-item .m { font-size: .8125rem; color: var(--ink-2); }
+
+details.tr { border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+details.tr summary { cursor: pointer; padding: 10px 14px; font-size: .875rem; color: var(--ink-2); list-style: none; display: flex; align-items: center; gap: 8px; }
+details.tr summary::-webkit-details-marker { display: none; }
+details.tr summary::before { content: "+"; font-family: var(--f-mono); color: var(--accent); width: 1em; }
+details.tr[open] summary::before { content: "−"; }
+details.tr p { margin: 0; padding: 0 14px 14px; font-size: .9375rem; line-height: 1.85; max-width: 66ch; }
+
+.next { padding-block: 30px 60px; display: grid; gap: 8px; }
+.next h2 { margin: 0; font-family: var(--f-read); font-weight: 500; font-size: 1.4rem; }
+.next p { font-size: .9375rem; max-width: 64ch; margin: 0; }
+.credit { font-size: .75rem; color: var(--ink-3); margin-top: 18px !important; }
+
+/* term popover */
+.pop {
+  position: fixed; left: 50%; transform: translateX(-50%); z-index: 50;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  width: min(460px, calc(100% - 32px));
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow);
+  padding: 14px 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px;
+}
+.pop .t { font-family: var(--f-read); font-size: 1.2rem; font-weight: 500; }
+.pop .m { grid-column: 1; font-size: .875rem; color: var(--ink-2); }
+.pop .x { grid-row: 1 / span 2; grid-column: 2; align-self: start; border: 0; background: none; font-size: 1.2rem; line-height: 1; color: var(--ink-3); padding: 4px; }
+@media (prefers-reduced-motion: reduce) { .switch .dot::after { transition: none; } }
+</style>
+
+<div class="wrap head">
+  <div class="eyebrow">TED · 予習ノート</div>
+  <h1>Can AI make us more human?</h1>
+  <p class="lead">社会心理学者とビジネスリーダーの対談を、約3分ずつのパートに分けて予習します。かたまり読みでは、意味のかたまりごとに英語の語順のまま日本語を添えています。</p>
+  <div class="people">
+    <div class="person"><span class="spk s1">HG</span><b>Heidi Grant</b><span class="role">社会心理学者</span></div>
+    <div class="person"><span class="spk s2">BC</span><b>Barry Cooper</b><span class="role">NiCE（顧客対応向けソフトウェア企業）CX部門 プレジデント</span></div>
+  </div>
+  <div class="howto">
+    <h2>読み方</h2>
+    <ol>
+      <li><b>かたまり読み</b>で、段落の要旨にさっと目を通す。語句の一覧は「語句」を開くと見られます。</li>
+      <li>左から「英語 → 下の日本語」の順に読む。英語に戻って読み直さない。下線の語句はタップすると意味が出ます。</li>
+      <li><b>日本語を隠す</b>をオンにして、英語だけで意味が取れるか確かめる。詰まったかたまりだけタップして確認する。</li>
+      <li><b>通し読み</b>（英文だけ）で、区切りのない英文を前から読む。詰まったらかたまり読みに戻る。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="wrap bar-in">
+    <div class="partnav" role="group" aria-label="パート">
+      <button type="button" class="pn-btn" data-step="-1" id="pnPrev" aria-label="前のパート">‹</button>
+      <select id="partSel" aria-label="パートを選ぶ"></select>
+      <button type="button" class="pn-btn" data-step="1" id="pnNext" aria-label="次のパート">›</button>
+    </div>
+    <div class="seg" role="group" aria-label="表示">
+      <button type="button" data-view="chunk" aria-pressed="true">かたまり読み</button>
+      <button type="button" data-view="plain" aria-pressed="false">通し読み</button>
+    </div>
+    <button type="button" class="switch" id="hideJa" aria-pressed="false"><span class="dot" aria-hidden="true"></span>日本語を隠す</button>
+    <button type="button" class="small-btn" id="closeAll" hidden>開いた日本語を閉じる</button>
+  </div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<div class="wrap">
+  <section class="next">
+    <h2>このあと</h2>
+    <p id="nextText"></p>
+    <button type="button" class="btn-next" id="nextPart" data-step="1" hidden></button>
+    <p class="credit">出典：TED Intersections「Can AI make us more human? A social psychologist and a business leader answer」Heidi Grant, Barry Cooper。スクリプトはご提供いただいたものを使用した個人学習用のノートです。</p>
+  </section>
+</div>
+
+<div class="pop" id="pop" role="status" hidden>
+  <span class="t" id="popT"></span>
+  <span class="m" id="popM"></span>
+  <button type="button" class="x" id="popX" aria-label="閉じる">×</button>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- content ---------- */
+const SPK = { HG: `s1`, BC: `s2` };
+const PARTS = [
+  {
+    label: `パート1`, range: `00:03–01:59`,
+    paras: [
+      {
+        ts: `00:03`, spk: `HG`,
+        gist: `冒頭の一言。AIは、自分の死角や見落としを教えてくれることで、なりたい自分、人との関わりの中でありたい自分でいられるよう助けてくれる。`,
+        sents: [
+          { ck: [[`AI can help us be the self`, `AIは私たちが自分でいられるよう助けてくれる`], [`we're trying to be`, `なろうとしている`], [`and the person we intend to be`, `そしてなろうとしている人でいられるよう`], [`in our interaction with someone else`, `誰かとのやりとりの中で`], [`by telling us where our blind spots are,`, `自分の死角がどこにあるかを教えることで`], [`what we may be missing.`, `何を見落としているかを`]],
+            note: `<b>help us be …</b> は「help＋人＋動詞の原形」で「私たちが〜であるのを助ける」。<b>the self we're trying to be</b> は「なろうとしている自分」。` },
+        ],
+        terms: [
+          { t: `help A (do)`, m: `Aが〜するのを助ける`, re: `help us be` },
+          { t: `intend to`, m: `〜するつもりである`, re: `intend to` },
+          { t: `interaction`, m: `やりとり、関わり`, re: `interaction` },
+          { t: `blind spot`, m: `死角、自分では気づかない弱点`, re: `blind spots` },
+        ],
+        ja: `AIは、私たちの死角がどこにあるか、何を見落としているかを教えてくれることで、私たちがなろうとしている自分、誰かとのやりとりの中でありたい自分でいられるよう助けてくれます。`,
+      },
+      {
+        ts: `00:29`, spk: `BC`,
+        gist: `今の時代、AIの時代にキャリアを始め、新人として仕事に就く人は、何を考えておくべきか。`,
+        sents: [
+          { ck: [[`I’m really interested,`, `ぜひ聞きたいのですが`], [`if someone's starting out in their careers these days,`, `最近キャリアを始めようとしている人がいたら`], [`you know, in the era of AI,`, `ほら、AIの時代に`], [`going into an entry-level job or something,`, `新人向けの仕事などに就くとして`], [`you know, what should they be thinking about?`, `その人は何を考えておくべきでしょう`]],
+            note: `<b>if someone's starting out …</b> で状況を設定し、最後の <b>what should they be thinking about?</b> で問いを出しています。間に you know が何度も挟まる話し言葉です。` },
+        ],
+        terms: [
+          { t: `start out`, m: `（キャリアなどの）スタートを切る`, re: `starting out` },
+          { t: `these days`, m: `最近、今どき`, re: `these days` },
+          { t: `era`, m: `時代`, re: `era` },
+          { t: `entry-level job`, m: `新人向けの仕事、初級職`, re: `entry-level job` },
+        ],
+        ja: `ぜひお聞きしたいのですが、今の時代、AIの時代にキャリアを始めて、新人として仕事に就くような人は、何を考えておくべきでしょうか。`,
+      },
+      {
+        ts: `00:45`, spk: `HG`,
+        gist: `AIが急に注目される前から、貪欲に学び続けることが成功の秘訣だった。成長マインドセットを持つのは簡単そうに聞こえるし、人はもともと学ぶのが好きなものだが……。`,
+        sents: [
+          { ck: [[`Well,`, `そうですね`], [`it's a great question.`, `いい質問です`]] },
+          { ck: [[`I mean, in general, I think,`, `つまり、全体として私が思うに`], [`and it's been true for a time,`, `しばらく前から言えることですが`], [`even before AI`, `AIが〜する前から`], [`in the last couple of years`, `ここ2、3年で`], [`really lit up in a big way,`, `一気に大きく注目される（前から）`], [`it's been true for a while`, `しばらく前から本当だったのは`], [`that sort of being a ravenous, continuous learner`, `貪欲に学び続ける人であることが`], [`was probably going to be the secret to success in life.`, `おそらく人生で成功する秘訣になるだろう、ということです`]],
+            note: `<b>it's been true for a while that …</b> の it は that 以下を指します。その途中に「AIがここ2、3年で一気に注目される前から」が挟まっています。<b>light up</b> は「明るくなる」から「急に盛り上がる」。` },
+          { ck: [[`And that's very --`, `そしてそれはとても……`], [`That sounds easy.`, `簡単そうに聞こえます`]] },
+          { ck: [[`It sounds easy`, `簡単そうに聞こえます`], [`to have a growth mindset.`, `成長マインドセットを持つのは`]] },
+          { ck: [[`I mean, people just say,`, `つまり、人は簡単に言うんです`], [`you know, everyone thinks they love to learn`, `誰もが自分は学ぶのが好きだと思っている`], [`because in some sense we do.`, `ある意味では実際に好きだから`]],
+            note: `<b>we do</b> は we love to learn の言い換えです（実際に好きだから）。` },
+          { ck: [[`In some sense,`, `ある意味で`], [`human beings do love to learn,`, `人間は本当に学ぶのが好きで`], [`and that's innate.`, `それは生まれつきのものです`]] },
+        ],
+        terms: [
+          { t: `in general`, m: `全体として、一般に`, re: `in general` },
+          { t: `for a while`, m: `しばらくの間`, re: `for a while` },
+          { t: `the last couple of years`, m: `ここ2、3年`, re: `last couple of years` },
+          { t: `light up`, m: `急に盛り上がる、脚光を浴びる`, re: `lit up` },
+          { t: `in a big way`, m: `大々的に`, re: `in a big way` },
+          { t: `ravenous`, m: `貪欲な（本来は「ひどく飢えた」）`, re: `ravenous` },
+          { t: `continuous`, m: `絶え間ない`, re: `continuous` },
+          { t: `the secret to`, m: `〜の秘訣`, re: `the secret to` },
+          { t: `growth mindset`, m: `成長マインドセット（能力は学びや努力で伸ばせると考える姿勢）`, re: `growth mindset` },
+          { t: `in some sense`, m: `ある意味で`, re: `In some sense` },
+          { t: `innate`, m: `生まれつきの`, re: `innate` },
+        ],
+        ja: `そうですね、いい質問です。全体として言えば、AIがここ2、3年で一気に注目されるより前から、しばらくの間ずっと言われてきたことですが、貪欲に学び続ける人であることが、おそらく人生で成功する秘訣になるでしょう。そしてそれはとても……簡単そうに聞こえますよね。成長マインドセットを持つのは簡単そうに聞こえます。誰もが自分は学ぶのが好きだと思っています。ある意味では、実際にそうだからです。ある意味で、人間は本当に学ぶのが好きで、それは生まれつきのものです。`,
+      },
+      {
+        ts: `01:23`, spk: `HG`,
+        gist: `大人として、評価され結果が問われる現実の中では、学ぶことを楽しむのは難しい。もう何でも知っているように見せることに気を取られ、安全で慣れたことにとどまりたくなる。変化のペースは落ちないので、それと闘う必要がある。`,
+        sents: [
+          { ck: [[`But really loving to learn,`, `でも本当に学ぶのを好きでいることは`], [`as an adult,`, `大人として`], [`in the real world`, `現実の世界で`], [`whose performance is being evaluated,`, `仕事ぶりを評価され`], [`who has real consequences for success and failure,`, `成功や失敗が実際の結果につながる（大人として）`], [`it gets awfully hard to love to learn,`, `学ぶのを好きでいるのはひどく難しくなる`], [`because you really are so focused`, `なぜならとても気を取られているから`], [`on looking like you already know everything,`, `もう何でも知っているように見えることに`], [`right?`, `でしょう？`]],
+            note: `話しながら構文が変わっています。whose / who は「現実の世界で評価される大人」を説明しています。<b>But really loving to learn …</b> で始めた主語を、<b>it gets awfully hard to love to learn</b> と言い直しています。` },
+          { ck: [[`That's the headspace`, `それが心の状態です`], [`that we get into.`, `私たちが陥る`]] },
+          { ck: [[`You're terrified`, `とても怖いんです`], [`to not look like you already know it.`, `もう知っているように見えないことが`]] },
+          { ck: [[`And of course,`, `そしてもちろん`], [`that then sort of forces people`, `そうなると人は追い込まれる`], [`into wanting to stay safe,`, `安全なところにいたいと思うように`], [`to stay with what's familiar.`, `慣れたものにとどまりたいと`]],
+            note: `<b>force A into doing</b> は「Aを〜するように追い込む」。` },
+          { ck: [[`And we really need to fight that.`, `そして私たちはそれと本当に闘わなければなりません`]] },
+          { ck: [[`I think that`, `思うに`], [`the pace of change`, `変化のペースは`], [`is not going to slow down.`, `落ちることはないでしょう`]] },
+        ],
+        terms: [
+          { t: `evaluate`, m: `評価する`, re: `evaluated` },
+          { t: `consequences`, m: `結果、影響`, re: `consequences` },
+          { t: `awfully`, m: `ひどく、とても`, re: `awfully` },
+          { t: `be focused on`, m: `〜に集中している、気を取られている`, re: `focused` },
+          { t: `headspace`, m: `心の状態、気持ちの持ちよう`, re: `headspace` },
+          { t: `get into`, m: `（ある状態に）陥る`, re: `get into` },
+          { t: `terrified`, m: `ひどく怖がって`, re: `terrified` },
+          { t: `force A into`, m: `Aを〜に追い込む`, re: `forces people` },
+          { t: `familiar`, m: `慣れ親しんだ`, re: `familiar` },
+          { t: `pace`, m: `ペース、速さ`, re: `pace` },
+          { t: `slow down`, m: `遅くなる`, re: `slow down` },
+        ],
+        ja: `でも、大人として、仕事ぶりを評価され、成功や失敗が実際の結果につながる現実の世界で、本当に学ぶことを好きでいるのは、ひどく難しくなります。もう何でも知っているように見せることに、すっかり気を取られてしまうからです。私たちはそういう心の状態に陥ってしまう。もう知っているように見えないことが怖くてたまらないんです。そしてもちろん、そうなると人は、安全なところにいたい、慣れたものにとどまりたいという気持ちに追い込まれます。私たちはそれと本当に闘わなければなりません。変化のペースは落ちないと思いますから。`,
+      },
+    ],
+  },
+  {
+    label: `パート2`, range: `01:59–04:46`,
+    paras: [
+      {
+        ts: `01:59`, spk: `BC`,
+        gist: `自分の会社は、顧客対応にAIを使う分野の会社。AI以前は、管理者が電話の10件に1件、メールの50件に1件だけを確認して主観でフィードバックしていたので、「たまたまダメな電話を聞いただけ」と反発されることもあった。`,
+        sents: [
+          { ck: [[`The company I work for,`, `私が勤めている会社は`], [`we work in the space of customer service`, `顧客サービスの分野で仕事をしています`], [`and using AI in customer service,`, `そして顧客サービスでAIを使う分野で`], [`and the people that are speaking on phones`, `そして電話で話している人たちや`], [`and using chats with consumers,`, `消費者とチャットをしている人たちについて`], [`you know, it used to be, before AI,`, `かつては、AI以前は`], [`that there was a coach, a manager, a quality manager`, `コーチや管理者、品質管理の担当者がいて`], [`that would basically listen in to one in 10 of their calls`, `基本的に通話の10件に1件を聞いたり`], [`or would look, review one in 50 of their emails`, `メールの50件に1件を確認したりして`], [`and then subjectively give feedback to them,`, `それから主観的にフィードバックをしていました`]],
+            note: `<b>The company I work for, we …</b> は「私の会社について言えば、私たちは〜」。<b>it used to be … that …</b> は「かつては〜だった」。<b>would</b> は過去の習慣（よく〜したものだ）。` },
+          { ck: [[`and that the argument would be,`, `そしてよく言われたのがこうです`], [`"Well, you listened to my crappy call.`, `「たまたま私のダメな電話を聞いたんでしょう`]],
+            note: `<b>the argument would be</b> は「（言われた側の）言い分はよく〜だった」。<b>crappy</b> は「ひどい、ダメな」というくだけた言葉です。` },
+          { ck: [[`All my other calls were great.`, `ほかの電話は全部よかったのに`]] },
+          { ck: [[`What about the other ones?"`, `ほかのはどうなんですか」`]] },
+        ],
+        terms: [
+          { t: `in the space of`, m: `〜の分野で`, re: `in the space of` },
+          { t: `customer service`, m: `顧客サービス、カスタマーサービス`, re: `customer service` },
+          { t: `consumer`, m: `消費者`, re: `consumers` },
+          { t: `it used to be`, m: `かつては〜だった`, re: `it used to be` },
+          { t: `quality manager`, m: `品質管理の担当者`, re: `quality manager` },
+          { t: `listen in to`, m: `（通話を）横で聞く、聞いてチェックする`, re: `listen in to` },
+          { t: `review`, m: `確認する、見直す`, re: `review` },
+          { t: `subjectively`, m: `主観的に`, re: `subjectively` },
+          { t: `crappy`, m: `ひどい、ダメな（くだけた語）`, re: `crappy` },
+        ],
+        ja: `私が勤めている会社は、顧客サービスと、顧客サービスでのAI活用の分野で仕事をしています。電話やチャットで消費者とやりとりする人たちについて言えば、AI以前は、コーチや管理者、品質管理の担当者がいて、基本的に通話の10件に1件を聞いたり、メールの50件に1件を確認したりして、それから主観的にフィードバックをしていました。すると、よくこう言われたものです。「たまたま私のダメな電話を聞いたんでしょう。ほかの電話は全部よかったのに。ほかのはどうなんですか」`,
+      },
+      {
+        ts: `02:36`, spk: `BC`,
+        gist: `今はAIのソフトがすべての通話とメールを確認し、対応の質、行動、成果を採点する。そのため伸ばすべき点がわかり、その日のコーチの気分に左右されない。`,
+        sents: [
+          { ck: [[`So we have software`, `それで私たちにはソフトウェアがあります`], [`that's been around for quite a while now`, `もうかなり前からある`], [`using AI,`, `AIを使った`], [`that's listening to every call that they do,`, `担当者のすべての通話を聞き`], [`that is monitoring every email`, `すべてのメールを確認し`], [`and actually scoring those people`, `そして実際にその人たちを採点する`], [`on how well they do,`, `どれだけうまくやったか`], [`the behaviors they demonstrate,`, `どんな行動を見せたか`], [`the outcomes they generate,`, `どんな成果を出したか`], [`all that kind of stuff.`, `そういったことすべてについて`]],
+            note: `software に that 節がいくつもかかっています（前からある／すべての通話を聞いている／メールを確認して採点している）。<b>score A on B</b> は「AをBの点で採点する」。` },
+          { ck: [[`So that allows you basically`, `そのおかげで基本的に〜できます`], [`to understand the areas for development.`, `伸ばすべき点を理解することが`]],
+            note: `<b>allow A to do</b> は「Aが〜できるようにする」。` },
+          { ck: [[`It's not down to a coach's opinion`, `コーチの意見しだいではないんです`], [`on that day,`, `その日の`], [`who maybe had a bad night the night before`, `もしかしたら前の晩によく眠れず`], [`and he's in a bad mood.`, `機嫌が悪いかもしれない（コーチの）`]],
+            note: `<b>be down to A</b> は「Aしだいである」。who 以下は coach を説明していて、途中から he's in a bad mood と文の形が変わっています。` },
+        ],
+        terms: [
+          { t: `be around`, m: `存在している、出回っている`, re: `been around` },
+          { t: `quite a while`, m: `かなり長い間`, re: `quite a while` },
+          { t: `monitor`, m: `監視する、チェックする`, re: `monitoring` },
+          { t: `score`, m: `採点する`, re: `scoring` },
+          { t: `demonstrate`, m: `（行動などを）示す`, re: `demonstrate` },
+          { t: `outcome`, m: `成果、結果`, re: `outcomes` },
+          { t: `generate`, m: `生み出す`, re: `generate` },
+          { t: `all that kind of stuff`, m: `そういったことすべて（口語）`, re: `all that kind of stuff` },
+          { t: `areas for development`, m: `伸ばすべき点、改善点`, re: `areas for development` },
+          { t: `be down to`, m: `〜しだいである`, re: `down to` },
+          { t: `in a bad mood`, m: `機嫌が悪い`, re: `in a bad mood` },
+        ],
+        ja: `そこで、私たちのところには、もうかなり前からあるAIを使ったソフトウェアがあって、担当者のすべての通話を聞き、すべてのメールを確認して、どれだけうまく対応したか、どんな行動を見せたか、どんな成果を出したかといったことを実際に採点しています。そのおかげで、基本的に伸ばすべき点がわかります。前の晩によく眠れず機嫌が悪いかもしれないコーチの、その日の意見しだい、ということにはならないんです。`,
+      },
+      {
+        ts: `03:03`, spk: `BC`,
+        gist: `トレーニングの方法も工夫できる。特定の行動に絞ったAIのトレーニング、同僚のお手本の通話を見せること、さらにAIが客を演じて苦手な場面を練習させ、「こう言うべきだった」と指導することもできる。`,
+        sents: [
+          { ck: [[`And then`, `そして`], [`there's really clever ways`, `本当にうまいやり方があります`], [`of actually executing that training.`, `そのトレーニングを実際に行う`]],
+            note: `<b>there's … ways</b> は本来 there are ですが、話し言葉ではよくある形です。` },
+          { ck: [[`You can do very, very specific AI-driven training`, `とても具体的な、AIによるトレーニングができます`], [`for a particular behavior.`, `特定の行動に絞った`]] },
+          { ck: [[`You could, for example,`, `たとえば`], [`give a demonstration of another call with someone`, `誰かとの別の通話をお手本として見せることができます`], [`that one of your colleagues did`, `同僚の1人が行った`], [`where they did a great example`, `そこで見事なお手本を示した`], [`of that particular behavior.`, `その特定の行動の`]],
+            note: `call を、that one of your colleagues did（同僚が行った）と where they did …（その中で見事なお手本を示した）が後ろから説明しています。` },
+          { ck: [[`And we even have examples`, `そして例まであります`], [`of simulated customers.`, `模擬の客（AIが演じる客）の`]] },
+          { ck: [[`So we know`, `つまり、わかっているとします`], [`a particular agent or employee struggles`, `ある担当者や従業員が苦戦していると`], [`in this situation,`, `こういう場面で`], [`so we'll have an AI simulate a customer`, `そこでAIに客を演じさせるんです`], [`that will test that situation.`, `その場面を試すような`]],
+            note: `<b>have A do</b> は「Aに〜させる」。<b>agent</b> はここではコールセンターの「担当者」です。` },
+          { ck: [[`And the AI can give training`, `そしてAIはトレーニングができます`], [`to the individual, the employee,`, `その個人、その従業員に`], [`to say, "Look,`, `こう言って。「いいですか`], [`you should have said this rather than this.`, `こう言うより、こう言うべきでした`]],
+            note: `<b>should have done</b> は「〜すべきだった（のにしなかった）」。<b>A rather than B</b> は「BではなくA」。` },
+          { ck: [[`You should have done that rather than that."`, `あれではなく、こうすべきでした」と`]] },
+        ],
+        terms: [
+          { t: `clever`, m: `うまい、気の利いた`, re: `clever` },
+          { t: `execute`, m: `実行する`, re: `executing` },
+          { t: `AI-driven`, m: `AIを活用した、AIによる`, re: `AI-driven` },
+          { t: `particular`, m: `特定の`, re: `particular` },
+          { t: `demonstration`, m: `実演、お手本`, re: `demonstration` },
+          { t: `colleague`, m: `同僚`, re: `colleagues` },
+          { t: `simulated`, m: `模擬の、シミュレーションの`, re: `simulated` },
+          { t: `agent`, m: `（コールセンターの）担当者、オペレーター`, re: `agent` },
+          { t: `struggle`, m: `苦戦する`, re: `struggles` },
+          { t: `simulate`, m: `模擬的に再現する、演じる`, re: `simulate` },
+          { t: `should have done`, m: `〜すべきだった`, re: `should have` },
+          { t: `A rather than B`, m: `BではなくA`, re: `rather than` },
+        ],
+        ja: `そして、そのトレーニングを実際に行ううまいやり方もあります。特定の行動に絞った、とても具体的なAIのトレーニングができるんです。たとえば、同僚の1人が行った別の通話で、その行動の見事なお手本になっているものを見せることができます。AIが演じる模擬の客を使う例まであります。ある担当者や従業員がこういう場面で苦戦しているとわかっていれば、AIに客を演じさせて、その場面を試すんです。そしてAIはその本人に「いいですか、こう言うより、こう言うべきでした。あれではなく、こうすべきでした」と指導できます。`,
+      },
+      {
+        ts: `03:43`, spk: `HG`,
+        gist: `人材育成でのAIの可能性を示すいい例。人どうしのフィードバックは本質的に主観的で、与える側自身を映すものでもある。AIなら主観に左右されにくい中身の濃いフィードバックを、行動が起きたその瞬間に、最も効果がある時に届けられる。`,
+        sents: [
+          { ck: [[`There's such a great example`, `それはとてもいい例です`], [`of where the potential for AI rests`, `AIの可能性がどこにあるかの`], [`in learning and development.`, `人材育成において`]],
+            note: `<b>There's such a great example</b> は That's such a great example（それはとてもいい例だ）の意味で取ると自然です。<b>rest in</b> は「〜にある」。` },
+          { ck: [[`Because you touched on so many things,`, `あなたはたくさんのことに触れたので`], [`I think,`, `思うに`], [`that are important.`, `大切な（ことに）`]],
+            note: `that are important は so many things を説明していて、間に I think が挟まっています。` },
+          { ck: [[`One is the idea`, `1つは考え方です`], [`of really quality feedback,`, `本当に質の高いフィードバックという`], [`feedback in the human-and-human world`, `人と人の世界でのフィードバックは`], [`is subjective, inherently,`, `本質的に主観的です`], [`and truthfully,`, `そして正直に言うと`], [`a lot of research suggests`, `多くの研究が示しているのは`], [`the feedback you give`, `あなたが与えるフィードバックは`], [`is as much about you`, `あなた自身についてのものでもある`], [`as it is about the person`, `相手についてのものであるのと同じくらい`], [`you're giving feedback to.`, `フィードバックを与えている（相手）`]],
+            note: `<b>quality</b> はここでは形容詞で「質の高い」。<b>as much about A as (it is) about B</b> は「Bについてであるのと同じくらいAについてでもある」。フィードバックには、言う側の主観も同じくらい表れる、ということです。` },
+          { ck: [[`For better or worse.`, `良くも悪くも`]] },
+          { ck: [[`So that ability`, `だからその力`], [`to be getting really rich feedback`, `本当に中身の濃いフィードバックを得られる`], [`that is a little bit less perhaps grounded`, `もしかしたら少し根ざしていない`], [`in your own kind of subjective state.`, `自分自身の主観的な状態に`]],
+            note: `動詞のない文で、「〜を得られるというその力（が大きい）」という意味です。<b>grounded in</b> は「〜に根ざした、〜に基づいた」。` },
+          { ck: [[`I think also`, `そして思うのは`], [`your ability to get feedback`, `フィードバックを受けられること`], [`at the moment`, `まさにその時に`], [`that you could use the feedback,`, `それを生かせる`], [`you know,`, `ほら`], [`nudging behavior is much more effective`, `行動をそっと促すのはずっと効果的です`], [`if you can nudge the behavior`, `その行動を促せれば`], [`in the moment that the behavior is occurring,`, `その行動が起きているその瞬間に`], [`which is, again,`, `それはやはり`], [`very difficult for human managers or human coworkers to do.`, `人間の上司や同僚にはとても難しいことです`]],
+            note: `<b>your ability to get feedback …</b> で始めた文が、途中から nudging behavior is … と別の文に変わっています。<b>nudge</b> は「（ひじで）軽く押す」から「行動をそっと促す」。` },
+          { ck: [[`But AI can actually kind of give you that`, `でもAIは実際にそれを与えてくれます`], [`when you could use it most,`, `いちばん生かせる時に`], [`where it's most likely`, `最も〜しやすい（場面で）`], [`to change your performance.`, `あなたの仕事ぶりを変え`]] },
+        ],
+        terms: [
+          { t: `potential`, m: `可能性`, re: `potential` },
+          { t: `rest in`, m: `〜にある`, re: `rests` },
+          { t: `learning and development`, m: `人材育成、研修`, re: `learning and development` },
+          { t: `touch on`, m: `〜に触れる`, re: `touched on` },
+          { t: `quality (形容詞)`, m: `質の高い`, re: `quality feedback` },
+          { t: `subjective`, m: `主観的な`, re: `subjective` },
+          { t: `inherently`, m: `本質的に、もともと`, re: `inherently` },
+          { t: `truthfully`, m: `正直に言うと`, re: `truthfully` },
+          { t: `for better or worse`, m: `良くも悪くも`, re: `For better or worse` },
+          { t: `rich`, m: `中身の濃い、豊かな`, re: `rich feedback` },
+          { t: `grounded in`, m: `〜に根ざした、〜に基づいた`, re: `grounded` },
+          { t: `nudge`, m: `（行動を）そっと促す`, re: `nudge` },
+          { t: `coworker`, m: `同僚`, re: `coworkers` },
+          { t: `most likely to`, m: `最も〜しやすい`, re: `most likely` },
+          { t: `performance`, m: `成果、仕事ぶり`, re: `performance` },
+        ],
+        ja: `それは、人材育成においてAIの可能性がどこにあるかを示す、とてもいい例ですね。大切なことにたくさん触れてくださったと思います。1つは、本当に質の高いフィードバックという考え方です。人と人の世界でのフィードバックは、本質的に主観的なものです。正直に言うと、多くの研究が示しているのは、あなたが与えるフィードバックは、相手についてのものであるのと同じくらい、あなた自身についてのものでもある、ということです。良くも悪くも。ですから、自分の主観的な状態にあまり左右されない、中身の濃いフィードバックを得られるというのは大きい。それから、フィードバックを生かせるまさにその時に受けられることも大切です。行動が起きているその瞬間に促せれば、行動を促すのはずっと効果的になります。でもそれは、人間の上司や同僚にはとても難しいことです。AIなら、それをいちばん生かせる時、あなたの仕事ぶりを最も変えやすい場面で与えてくれます。`,
+      },
+    ],
+  },
+  {
+    label: `パート3`, range: `04:46–08:53`,
+    paras: [
+      {
+        ts: `04:46`, spk: `HG`,
+        gist: `もう1つは、難しい行動を、プレッシャーの少ない環境で練習できること。人は他人の目を気にするので、人がいる場面はどうしても評価の場になる。AIのコーチやシミュレーションなら、できる限り気楽な気持ちで練習できる。`,
+        sents: [
+          { ck: [[`So I think`, `ですから思うのは`], [`that those are some of the things`, `それらは〜なことだということ`], [`that are really rich.`, `本当に実りのある`]] },
+          { ck: [[`And the idea of also being able to practice,`, `そして練習できるという考え方も`], [`particularly challenging behaviors`, `特に難しい行動を`], [`in a less threatening environment.`, `それほど脅かされない環境で`]],
+            note: `動詞のない文で、「〜という考え方も（大切だ）」という意味です。` },
+          { ck: [[`The reality is,`, `現実には`], [`human beings care inherently`, `人間はもともと気にするものです`], [`about what other human beings think of them.`, `ほかの人間が自分をどう思うかを`]] },
+          { ck: [[`And so in any situation`, `だから、どんな場面でも`], [`with another human being present,`, `ほかの人がその場にいれば`], [`it's inherently evaluative,`, `どうしても評価の場になります`], [`even when people don't want it to be,`, `人がそう望まないときでも`], [`even when they say`, `たとえこう言っていても`], [`"have a growth mindset,`, `「成長マインドセットを持とう`], [`this is a safe space,`, `ここは安心できる場所だ`], [`it's OK to make mistakes."`, `失敗してもいい」と`]],
+            note: `<b>with A present</b> は「Aがその場にいる状態で」。` },
+          { ck: [[`And even if you really mean that,`, `そして本気でそう思っていても`], [`on some level,`, `どこかで`], [`human beings are still going to be concerned`, `人間はやはり気にするものです`], [`about how they look.`, `自分がどう見えるかを`]] },
+          { ck: [[`And there is that potential`, `そしてそういう可能性があります`], [`with an AI coach and an AI-based simulation`, `AIのコーチやAIを使ったシミュレーションには`], [`to feel about as free as you can feel.`, `これ以上ないくらい自由に感じられるという`]],
+            note: `<b>about as free as you can feel</b> は「感じられる限りに近いくらい自由に」＝ほぼ最大限に気楽に。` },
+        ],
+        terms: [
+          { t: `challenging`, m: `難しい、手ごわい`, re: `challenging` },
+          { t: `threatening`, m: `脅かすような、プレッシャーのある`, re: `threatening` },
+          { t: `environment`, m: `環境`, re: `environment` },
+          { t: `the reality is`, m: `現実には`, re: `The reality is` },
+          { t: `care about`, m: `〜を気にする（ここでは間に inherently が入っている）`, re: `care inherently` },
+          { t: `evaluative`, m: `評価的な、評価される`, re: `evaluative` },
+          { t: `safe space`, m: `安心して発言できる場`, re: `safe space` },
+          { t: `mean`, m: `本気で言う`, re: `really mean` },
+          { t: `on some level`, m: `どこかで、ある程度は`, re: `on some level` },
+          { t: `be concerned about`, m: `〜を気にする`, re: `concerned` },
+          { t: `AI-based`, m: `AIを使った`, re: `AI-based` },
+          { t: `simulation`, m: `模擬練習、シミュレーション`, re: `simulation` },
+        ],
+        ja: `ですから、それらは本当に実りのあることだと思います。それから、特に難しい行動を、プレッシャーの少ない環境で練習できるという考え方もそうです。現実には、人間は、ほかの人間が自分をどう思うかをもともと気にするものです。ですから、ほかの人がいる場面は、どんな場面でもどうしても評価の場になってしまいます。本人たちがそう望まないときでも、「成長マインドセットを持とう、ここは安心できる場所だ、失敗してもいい」と言っていても。そして本気でそう思っていても、人はどこかで、やはり自分がどう見えるかを気にします。AIのコーチやAIを使ったシミュレーションなら、これ以上ないくらい気楽な気持ちでいられる可能性があるんです。`,
+      },
+      {
+        ts: `05:36`, spk: `HG`,
+        gist: `評価される不安が完全になくなるとは限らないが、プレッシャーは減り、試行錯誤しやすくなる。悪い知らせを伝えるような難しい会話を、安心して練習できる場をつくれることが、学習科学者としてAIに期待している点。`,
+        sents: [
+          { ck: [[`I'm not actually even sure`, `実は確信すらありません`], [`the evaluation concerns go away completely.`, `評価される不安が完全になくなるとは`]] },
+          { ck: [[`But less threatening, right?`, `でもプレッシャーは減りますよね`]] },
+          { ck: [[`More free for trial and error,`, `試行錯誤をもっと自由にできる`], [`to do something new,`, `新しいことをしたり`], [`to be curious, to explore.`, `好奇心を持ったり、探ってみたり`]],
+            note: `この2文は動詞のない文で、AIとの練習は「プレッシャーが少なく、試行錯誤しやすい」と言っています。` },
+          { ck: [[`I think that is one of the things,`, `それは〜なことの1つだと思います`], [`as a learning scientist,`, `学習科学者として`], [`that makes me really excited about AI,`, `私がAIに本当にわくわくする`], [`to create safe spaces`, `安心できる場をつくること`], [`for people to practice difficult conversations,`, `人が難しい会話を練習するための`], [`to practice, you know,`, `練習すること`], [`giving a client bad news,`, `顧客に悪い知らせを伝えるのを`], [`that's never fun,`, `それは決して楽しいものではない`], [`or your boss,`, `あるいは上司に`], [`telling somebody something`, `誰かに何かを伝えること`], [`that you suspect they may not want to hear`, `相手が聞きたくないかもしれないと思うこと`], [`and trying to do that in a way`, `そしてそれを〜なやり方でしようとすること`], [`that doesn't demotivate them`, `相手のやる気をそがない`], [`you know, these are hard things.`, `ほら、これらは難しいことです`]],
+            note: `<b>one of the things … that makes me excited</b> の中身を、<b>to create safe spaces …</b> 以下で説明しています。<b>suspect</b> は「（よくないことを）〜ではないかと思う」。` },
+          { ck: [[`So I love that`, `だから私はうれしいんです`], [`AI can help us with that.`, `AIがそれを手伝ってくれることが`]] },
+        ],
+        terms: [
+          { t: `evaluation`, m: `評価`, re: `evaluation` },
+          { t: `go away`, m: `なくなる`, re: `go away` },
+          { t: `trial and error`, m: `試行錯誤`, re: `trial and error` },
+          { t: `explore`, m: `探ってみる`, re: `explore` },
+          { t: `learning scientist`, m: `学習科学者（人がどう学ぶかを研究する人）`, re: `learning scientist` },
+          { t: `client`, m: `顧客、依頼人`, re: `client` },
+          { t: `suspect`, m: `〜ではないかと思う`, re: `suspect` },
+          { t: `demotivate`, m: `やる気をそぐ`, re: `demotivate` },
+        ],
+        ja: `評価される不安が完全になくなるかどうかは、実はわかりません。でもプレッシャーは減りますよね。試行錯誤したり、新しいことをしたり、好奇心を持って探ってみたりしやすくなります。学習科学者として私がAIに本当にわくわくしていることの1つは、人が難しい会話を練習できる安心な場をつくれることです。顧客に悪い知らせを伝える練習。これは決して楽しいものではありません。あるいは上司や誰かに、相手が聞きたくないかもしれないことを伝え、しかも相手のやる気をそがないように伝える練習。こうしたことは難しいものです。だから、AIがそれを手伝ってくれるのがうれしいんです。`,
+      },
+      {
+        ts: `06:18`, spk: `HG`,
+        gist: `職場に入る若い人へ。好奇心をなくさず、貪欲に学び続けること。AIを使って近道したくなっても慎重に。その場は仕事が片づいても、学んでいないので、いずれ代償を払うことになる。`,
+        sents: [
+          { ck: [[`So I think`, `ですから思うのは`], [`for young people coming into the workplace,`, `職場に入ってくる若い人たちには`], [`don't lose your curiosity,`, `好奇心をなくさないで`], [`keep trying to ravenously learn`, `貪欲に学ぼうとし続けて`], [`as many things as you can.`, `できるだけ多くのことを`]] },
+          { ck: [[`And then again,`, `そしてやはり`], [`I think with AI,`, `AIについては`], [`be very thoughtful`, `よく考えてください`], [`about the shortcuts`, `近道について`], [`you may be tempted to take.`, `使いたくなるかもしれない`]],
+            note: `<b>be tempted to do</b> は「〜したくなる、〜する誘惑に駆られる」。` },
+          { ck: [[`At some point,`, `ある時点では`], [`you know, in the moment,`, `その場では`], [`you might be able to kind of get the job done,`, `仕事を片づけられるかもしれない`], [`but eventually,`, `でもいずれは`], [`you're going to pay the price`, `代償を払うことになる`], [`because you aren't learning.`, `学んでいないのだから`]] },
+        ],
+        terms: [
+          { t: `workplace`, m: `職場`, re: `workplace` },
+          { t: `curiosity`, m: `好奇心`, re: `curiosity` },
+          { t: `ravenously`, m: `貪欲に`, re: `ravenously` },
+          { t: `thoughtful`, m: `よく考えた、慎重な`, re: `thoughtful` },
+          { t: `shortcut`, m: `近道、手抜き`, re: `shortcuts` },
+          { t: `be tempted to`, m: `〜したくなる`, re: `tempted to` },
+          { t: `in the moment`, m: `その場では`, re: `in the moment` },
+          { t: `get the job done`, m: `仕事を片づける`, re: `get the job done` },
+          { t: `eventually`, m: `いずれは、最終的に`, re: `eventually` },
+          { t: `pay the price`, m: `代償を払う`, re: `pay the price` },
+        ],
+        ja: `ですから、職場に入ってくる若い人たちには、好奇心をなくさず、できるだけ多くのことを貪欲に学ぼうとし続けてほしいと思います。そしてやはり、AIについては、使いたくなるかもしれない近道に十分気をつけてください。その場では仕事を片づけられるかもしれません。でも学んでいないのですから、いずれ代償を払うことになります。`,
+      },
+      {
+        ts: `06:44`, spk: `HG`,
+        gist: `意志の力が要るのはここ。AIは取りかかりの助けにして、まとめるのは自分でする。あるいは自分でまとめてからAIに磨いてもらう。書き直しを頼むのではなく、コーチとしてヒントをもらう使い方をする。`,
+        sents: [
+          { ck: [[`So I think that's one of the things`, `ですから、それが〜なことの1つだと思います`], [`I'd say,`, `私が思うに`], [`you know, we really have to exercise some willpower around,`, `私たちが本当に意志の力を働かせなければならない`], [`is, again,`, `それはやはり`], [`either trying to use AI as something`, `AIを〜なものとして使おうとすること`], [`that helps you get started`, `取りかかるのを助けてくれる`], [`but you are still going to do the synthesis.`, `でもまとめるのはあくまで自分でする`]],
+            note: `構文が崩れています。<b>one of the things … we have to exercise some willpower around</b>（意志の力を働かせる必要があることの1つ）と言ったあと、<b>is</b> でその中身を続けています。<b>either A … or B</b> の or は、2文後の Or conversely です。` },
+          { ck: [[`You're still going to pull all the notes together.`, `メモをまとめるのは、あくまで自分です`]] },
+          { ck: [[`Or conversely,`, `あるいは逆に`], [`you start by pulling all the notes together`, `まず自分でメモをまとめることから始めて`], [`and then you have the AI help refine it.`, `それからAIに磨くのを手伝ってもらう`]],
+            note: `<b>have A help (to) do</b> は「Aに〜するのを手伝ってもらう」。` },
+          { ck: [[`What am I missing,`, `私は何を見落としているか`], [`what am I not thinking about?`, `何を考えていないか`]],
+            note: `AIに投げかける質問の例です。` },
+          { ck: [[`How could I communicate this`, `どうすればこれを伝えられるか`], [`more effectively?`, `もっと効果的に`]] },
+          { ck: [[`And try to use AI as a coach`, `そしてAIをコーチとして使うようにして`], [`to give you tips,`, `ヒントをくれる`], [`rather than ask it to rewrite it for you.`, `代わりに書き直してくれと頼むのではなく`]] },
+        ],
+        terms: [
+          { t: `exercise willpower`, m: `意志の力を働かせる`, re: `exercise some willpower` },
+          { t: `get started`, m: `取りかかる`, re: `get started` },
+          { t: `synthesis`, m: `まとめ上げること、統合`, re: `synthesis` },
+          { t: `pull together`, m: `まとめる`, re: `pull all the notes together` },
+          { t: `conversely`, m: `逆に`, re: `conversely` },
+          { t: `refine`, m: `磨く、洗練させる`, re: `refine` },
+          { t: `effectively`, m: `効果的に`, re: `effectively` },
+          { t: `tip`, m: `ヒント、コツ`, re: `tips` },
+          { t: `rewrite`, m: `書き直す`, re: `rewrite` },
+        ],
+        ja: `ですから、私たちが本当に意志の力を働かせなければならないことの1つは、やはり、AIを取りかかりの助けとして使いつつ、まとめ上げるのはあくまで自分でする、ということだと思います。メモをまとめるのは自分です。あるいは逆に、まず自分でメモをまとめてから、AIにそれを磨くのを手伝ってもらう。私は何を見落としているか、何を考えていないか。どうすればもっと効果的に伝えられるか。そして、代わりに書き直してくれと頼むのではなく、ヒントをくれるコーチとしてAIを使うようにすることです。`,
+      },
+      {
+        ts: `07:20`, spk: `HG`,
+        gist: `それにはかなりの自制心が要るが、近道をした人と違って自分が本当の専門家になったとき、最後に報われる。`,
+        sents: [
+          { ck: [[`Again,`, `繰り返しますが`], [`I recognize that`, `わかっています`], [`that takes a lot of discipline.`, `それにはかなりの自制心が要ることは`]] },
+          { ck: [[`But it's really going to pay off`, `でも本当に報われます`], [`in the end`, `最後には`], [`when you are, in fact, an expert,`, `あなたが実際に専門家になっていて`], [`and others, who took shortcuts, are not.`, `近道をしたほかの人たちはそうなっていないときに`]],
+            note: `最後の <b>are not</b> の後には an expert が省略されています。` },
+        ],
+        terms: [
+          { t: `recognize`, m: `認める、わかっている`, re: `recognize` },
+          { t: `discipline`, m: `自制心、規律`, re: `discipline` },
+          { t: `pay off`, m: `報われる、実を結ぶ`, re: `pay off` },
+          { t: `in the end`, m: `最後には`, re: `in the end` },
+          { t: `in fact`, m: `実際に`, re: `in fact` },
+        ],
+        ja: `繰り返しますが、それにはかなりの自制心が要ることはわかっています。でも最後には、本当に報われます。あなたは実際に専門家になっていて、近道をしたほかの人たちはそうなっていない、という時に。`,
+      },
+      {
+        ts: `07:33`, spk: `BC`,
+        gist: `まったく同感。成長マインドセットがまさに核心。70〜80年前は一生に1つの職業だったが、この20〜30年は技術の波が来るたびに物事が変わり、2つ、3つの職業を持つようになった。`,
+        sents: [
+          { ck: [[`You're 100 percent right.`, `100パーセントおっしゃるとおりです`]] },
+          { ck: [[`I think you hit the nail on the head`, `まさに核心を突いていると思います`], [`with the growth mindset.`, `成長マインドセットの話は`]] },
+          { ck: [[`You know, and rather than the fixed mindset`, `固定マインドセットではなく`], [`to recognize that`, `〜だと認めること`], [`you've always got room to grow and learn.`, `成長し学ぶ余地はいつでもあると`]],
+            note: `動詞のない文です。<b>fixed mindset</b> は growth mindset の反対で「能力は生まれつき決まっている」と考える姿勢。「固定マインドセットではなく、いつでも伸びる余地があると認めること（が大切）」と取ります。` },
+          { ck: [[`If you think back,`, `振り返ってみると`], [`you know, I don't know,`, `そうですね`], [`70, 80 years,`, `70年、80年前には`], [`People -- You had one profession.`, `人は……職業は1つでした`]] },
+          { ck: [[`You'd go out,`, `社会に出て`], [`you'd learn that profession,`, `その職業を身につけ`], [`and that would be your life’s work,`, `それが一生の仕事になったものです`], [`that one thing.`, `その1つのことが`]],
+            note: `<b>would</b> は過去の習慣（〜したものだ）。` },
+          { ck: [[`You know, for the last 20, 30 years,`, `この20年、30年は`], [`people have had two or three professions,`, `人は2つか3つの職業を持ってきました`], [`you know, as technology came through`, `テクノロジーが入ってきて`], [`and changed things each time,`, `そのたびに物事を変えるにつれて`], [`these waves.`, `こうした波が`]],
+            note: `最後の <b>these waves</b> は、テクノロジーの変化を「波」と言い直したものです。` },
+        ],
+        terms: [
+          { t: `hit the nail on the head`, m: `核心を突く、まさにそのとおりのことを言う`, re: `hit the nail on the head` },
+          { t: `fixed mindset`, m: `固定マインドセット（能力は変わらないと考える姿勢）`, re: `fixed mindset` },
+          { t: `room to`, m: `〜する余地`, re: `room to grow` },
+          { t: `think back`, m: `振り返る`, re: `think back` },
+          { t: `profession`, m: `職業`, re: `profession` },
+          { t: `life’s work`, m: `一生の仕事、ライフワーク`, re: `life’s work` },
+          { t: `come through`, m: `入ってくる、現れる`, re: `came through` },
+          { t: `wave`, m: `波`, re: `waves` },
+        ],
+        ja: `100パーセントおっしゃるとおりです。成長マインドセットの話は、まさに核心を突いていると思います。固定マインドセットではなく、成長し学ぶ余地はいつでもあると認めること。70年、80年前を振り返ってみると、人は職業を1つしか持っていませんでした。社会に出てその職業を身につけたら、その1つのことが一生の仕事になったものです。この20年、30年は、テクノロジーが入ってきて、そのたびに物事を変えるという波が来るにつれて、人は2つか3つの職業を持つようになりました。`,
+      },
+      {
+        ts: `08:05`, spk: `BC`,
+        gist: `AIではそれが2、3年ごとに起きる。2年前に学んだことはもう通用しないと受け入れ、また学ぶ。成長マインドセットがなければ乗り切れない。`,
+        sents: [
+          { ck: [[`I think what we're going to see with AI`, `AIで目にすることになるのは`], [`is that every couple of years.`, `それが2、3年ごとに起きることだと思います`]],
+            note: `<b>is that every couple of years</b> は省略の多い言い方で、「（職業が変わる波が）2、3年ごとに来る」という意味です。` },
+          { ck: [[`So you're only going to get through that`, `だからそれを乗り切るには〜しかない`], [`with the growth mindset,`, `成長マインドセットを持って`], [`with recognizing that`, `〜と認めることで`], [`what you learned two years ago`, `2年前に学んだことは`], [`is no longer relevant.`, `もはや役に立たないと`]] },
+          { ck: [[`It's time to learn again.`, `また学ぶ時なんだ、と`]] },
+        ],
+        terms: [
+          { t: `every couple of years`, m: `2、3年ごとに`, re: `every couple of years` },
+          { t: `get through`, m: `乗り切る`, re: `get through` },
+          { t: `no longer`, m: `もはや〜ない`, re: `no longer` },
+          { t: `relevant`, m: `関係がある、役に立つ`, re: `relevant` },
+        ],
+        ja: `AIでは、それが2、3年ごとに起きるようになると思います。ですから、それを乗り切るには、成長マインドセットを持ち、2年前に学んだことはもう通用しない、また学ぶ時なんだと認めるしかありません。`,
+      },
+      {
+        ts: `08:18`, spk: `BC`,
+        gist: `AIは高性能の車のような素晴らしい道具だが、誰もが同じように使えるわけではない。プロンプトエンジニアリングに長けていることは、腕のいいレーサーであるようなもの。ただそれも数年で変わる。だから成長マインドセットが鍵。`,
+        sents: [
+          { ck: [[`And you made another good point,`, `そしてもう1ついい点を指摘されました`], [`which is, you know,`, `それは`], [`AI is like a high-performance car`, `AIは高性能の車のようなもので`], [`or, you know, it's an amazing tool.`, `つまり素晴らしい道具だということです`]] },
+          { ck: [[`It doesn't mean that`, `だからといって〜というわけではない`], [`everyone can use that high-performance car or tool`, `誰もがその高性能の車や道具を使える`], [`the same way.`, `同じように`]] },
+          { ck: [[`So then there's, you know,`, `そこで出てくるのが`], [`knowing prompt engineering,`, `プロンプトエンジニアリングを知っていることです`], [`for example,`, `たとえば`], [`you know, being an expert prompt engineer`, `プロンプトエンジニアリングの達人であることは`], [`is the equivalent of being an amazing car racing driver`, `素晴らしいレーシングドライバーであることに相当します`], [`or something.`, `とでもいうか`]],
+            note: `<b>prompt engineering</b> は、AIから良い答えを引き出すための指示（プロンプト）の書き方を工夫する技術です。<b>the equivalent of</b> は「〜に相当するもの」。` },
+          { ck: [[`You know how to move that car`, `その車の動かし方を知っている`], [`really, really quickly.`, `ものすごく速く`]] },
+          { ck: [[`But that will change again`, `でもそれもまた変わるでしょう`], [`in a couple of years.`, `2、3年後には`]] },
+          { ck: [[`But I think you really hit it`, `でも本当に核心を突いていると思います`], [`with the growth mindset is key.`, `成長マインドセットが鍵だという点で`]],
+            note: `<b>you really hit it</b> は hit the nail on the head（核心を突く）の短い言い方。後ろは「成長マインドセットが鍵だ」という文と混ざっています。` },
+        ],
+        terms: [
+          { t: `make a point`, m: `（いい）指摘をする`, re: `made another good point` },
+          { t: `high-performance`, m: `高性能の`, re: `high-performance` },
+          { t: `prompt engineering`, m: `プロンプトエンジニアリング（AIへの指示の書き方の工夫）`, re: `prompt engineering` },
+          { t: `the equivalent of`, m: `〜に相当するもの`, re: `the equivalent of` },
+          { t: `racing driver`, m: `レーシングドライバー`, re: `racing driver` },
+          { t: `hit it`, m: `核心を突く`, re: `hit it` },
+          { t: `key`, m: `鍵、最も大切なこと`, re: `is key` },
+        ],
+        ja: `そしてもう1つ、いい点を指摘されました。AIは高性能の車のような、素晴らしい道具だということです。だからといって、誰もがその高性能の車や道具を同じように使えるわけではありません。そこで、たとえばプロンプトエンジニアリングを知っていることが大切になります。プロンプトエンジニアリングの達人であることは、素晴らしいレーシングドライバーであるようなものです。その車をものすごく速く走らせる方法を知っている。でもそれも、2、3年後にはまた変わるでしょう。ですから、成長マインドセットが鍵だというのは、本当に核心を突いていると思います。`,
+      },
+    ],
+  },
+  {
+    label: `パート4`, range: `08:53–11:50`,
+    paras: [
+      {
+        ts: `08:53`, spk: `HG`,
+        gist: `部下にAIを使わせたがらないリーダーの懸念は大きく2つ。「AIシェイミング」という言葉まである。1つは部下が学ばず専門性が育たないこと、もう1つは正確さ。`,
+        sents: [
+          { ck: [[`I'm curious what you think about,`, `あなたのお考えを聞きたいのですが`], [`because I would say like,`, `というのも、言ってみれば`], [`sort of the two major categories`, `大きく2つの種類があって`], [`I hear from leaders`, `リーダーたちから聞く`], [`who are reluctant`, `気が進まない（リーダー）`], [`to have their people using AI,`, `部下にAIを使わせることに`], [`you know, that there's even --`, `ほら、〜さえあって`], [`I’ve heard the phrase “AI shaming,”`, `「AIシェイミング」という言葉も聞いたことがあります`], [`right, kind of really discouraging people`, `つまり、人を思いとどまらせること`], [`from using it.`, `AIを使うのを`]],
+            note: `話しながら文の形が何度も変わっています。言いたいのは「部下にAIを使わせたがらないリーダーから聞く懸念は大きく2つあり、AIを使う人を責める『AIシェイミング』という言葉まである」ということです。<b>discourage A from doing</b> は「Aに〜するのを思いとどまらせる」。` },
+          { ck: [[`The one concern we talked about,`, `1つはすでに話した懸念で`], [`which is "I'm worried my people won't learn.`, `それは「部下が学ばなくなるのが心配だ`]] },
+          { ck: [[`I'm worried they won't build expertise."`, `専門性が身につかないのが心配だ」というもの`]] },
+          { ck: [[`But the other one, of course,`, `でももう1つは、もちろん`], [`is the accuracy concern.`, `正確さについての懸念です`]] },
+        ],
+        terms: [
+          { t: `major`, m: `主な、大きな`, re: `major` },
+          { t: `category`, m: `種類、分類`, re: `categories` },
+          { t: `be reluctant to`, m: `〜したがらない`, re: `reluctant` },
+          { t: `have A doing`, m: `Aに〜させておく`, re: `have their people using` },
+          { t: `AI shaming`, m: `AIを使う人を恥ずかしいことのように責めること`, re: `AI shaming` },
+          { t: `discourage A from`, m: `Aに〜するのを思いとどまらせる`, re: `discouraging` },
+          { t: `concern`, m: `懸念、心配`, re: `concern` },
+          { t: `expertise`, m: `専門知識、専門性`, re: `expertise` },
+          { t: `accuracy`, m: `正確さ`, re: `accuracy` },
+        ],
+        ja: `あなたのお考えを聞きたいのですが、部下にAIを使わせたがらないリーダーたちから聞く話には、大きく2つの種類があります。「AIシェイミング」という言葉まで聞いたことがあります。AIを使う人を本当に思いとどまらせるようなことです。1つはすでに話した懸念で、「部下が学ばなくなるのが心配だ。専門性が身につかないのが心配だ」というもの。そしてもう1つは、もちろん正確さについての懸念です。`,
+      },
+      {
+        ts: `09:22`, spk: `HG`,
+        gist: `ハルシネーション（AIがもっともらしい誤情報を作ること）の報道は多い。存在しない判例や論文の引用をでっち上げる。それをどう考え、どれくらい心配しているか。AIを使い始めた若い人は、出力をどう評価し、信頼できるかどうかをどう判断すべきか。`,
+        sents: [
+          { ck: [[`And that, you know, again,`, `そしてそれについては`], [`there's a lot of sort of headlines`, `見出しがたくさんあります`], [`about hallucinations.`, `ハルシネーションについての`]],
+            note: `<b>hallucination</b> は本来「幻覚」。AIがもっともらしい誤った情報を作り出すことを指します。` },
+          { ck: [[`It's making up law cases.`, `AIが判例をでっち上げている`]] },
+          { ck: [[`It's making up citations`, `引用をでっち上げている`], [`for science articles that don't exist.`, `存在しない科学論文の`]] },
+          { ck: [[`How do you think about that`, `それをどう考えていますか`], [`and how worried are you about that?`, `そしてどれくらい心配していますか`]] },
+          { ck: [[`And what, if anything,`, `そして何かあるとしたら何を`], [`do you think people need to be,`, `人々は〜すべきだと思いますか`], [`again, those young people`, `つまり若い人たち`], [`who are starting to use AI in their roles,`, `仕事でAIを使い始めている`], [`how they need to be thinking about`, `どう考えるべきか`], [`how they evaluate output,`, `出力をどう評価するか`], [`how they think about whether or not --`, `〜かどうかをどう考えるか`], [`I can trust what I’m getting.`, `自分が受け取っているものを信頼できるか`]],
+            note: `話しながら質問の形が何度も変わっています。言いたいのは「AIを使い始めた若い人は、出力をどう評価し、それを信頼できるかどうかをどう判断すべきか」です。最後は本人の心の声（I can trust…）になっています。<b>if anything</b> は「もしあるとすれば」。` },
+        ],
+        terms: [
+          { t: `headline`, m: `（ニュースの）見出し`, re: `headlines` },
+          { t: `hallucination`, m: `ハルシネーション（AIがもっともらしい誤情報を作ること）`, re: `hallucinations` },
+          { t: `make up`, m: `でっち上げる`, re: `making up` },
+          { t: `law case`, m: `判例、裁判の事例`, re: `law cases` },
+          { t: `citation`, m: `引用、出典`, re: `citations` },
+          { t: `if anything`, m: `もしあるとすれば`, re: `if anything` },
+          { t: `role`, m: `役割、仕事`, re: `roles` },
+          { t: `evaluate`, m: `評価する`, re: `evaluate` },
+          { t: `output`, m: `出力、AIが出した答え`, re: `output` },
+          { t: `whether or not`, m: `〜かどうか`, re: `whether or not` },
+        ],
+        ja: `そして、ハルシネーションについての見出しがたくさんありますよね。AIが判例をでっち上げている。存在しない科学論文の引用をでっち上げている。それをどう考えていますか。どれくらい心配していますか。そして、仕事でAIを使い始めている若い人たちは、何か気をつけることがあるとしたら、出力をどう評価し、受け取っているものを信頼できるかどうかを、どう考えるべきでしょうか。`,
+      },
+      {
+        ts: `09:56`, spk: `BC`,
+        gist: `まず2つ目（正確さ）について。鍵はプロンプトエンジニアリング。正しい答えを得るには正しい質問をすること。あいまいで何通りにも取れる質問はハルシネーションを生みやすい。ただ今はまだ初期段階で、1年ほどで自分で誤りを直せるようになると思う。`,
+        sents: [
+          { ck: [[`Super.`, `いいですね`]] },
+          { ck: [[`So to second question, first of all,`, `では、まず2つ目の質問について`], [`and that's about being really good`, `それは本当に上手であることにかかっています`], [`at prompt engineering.`, `プロンプトエンジニアリングが`]] },
+          { ck: [[`The questions you ask an LLM,`, `LLMに投げかける質問`], [`you know, conversational AI,`, `つまり対話型AIに`], [`is key.`, `それが鍵です`]],
+            note: `<b>LLM</b> は Large Language Model（大規模言語モデル）の略で、ChatGPTやClaudeのような対話型AIの土台です。主語は The questions（複数）ですが、話し言葉で is が使われています。` },
+          { ck: [[`And so asking the right questions`, `だから正しい質問をすることが`], [`is prompt engineering`, `プロンプトエンジニアリングです`], [`to getting the right answers.`, `正しい答えを得るための`]] },
+          { ck: [[`You can very easily ask an ambiguous question`, `あいまいな質問はとても簡単にしてしまえます`], [`that is very open to multiple interpretations.`, `いくつもの解釈ができてしまう`]] },
+          { ck: [[`That's going to more likely produce hallucination.`, `それはハルシネーションを生みやすくなります`]] },
+          { ck: [[`That's today,`, `それは今の話で`], [`it's early days.`, `まだ初期段階です`]] },
+          { ck: [[`In a year or so,`, `1年かそこらで`], [`you know, it'll be self-correcting`, `自分で誤りを直すようになり`], [`and better than that,`, `今よりよくなる`], [`I believe.`, `と私は思います`]] },
+        ],
+        terms: [
+          { t: `first of all`, m: `まず最初に`, re: `first of all` },
+          { t: `LLM`, m: `大規模言語モデル（対話型AIの土台）`, re: `LLM` },
+          { t: `conversational AI`, m: `対話型AI`, re: `conversational AI` },
+          { t: `ambiguous`, m: `あいまいな`, re: `ambiguous` },
+          { t: `be open to`, m: `〜の余地がある`, re: `open to` },
+          { t: `multiple`, m: `複数の`, re: `multiple` },
+          { t: `interpretation`, m: `解釈`, re: `interpretations` },
+          { t: `early days`, m: `まだ初期段階`, re: `early days` },
+          { t: `or so`, m: `〜かそこら`, re: `or so` },
+          { t: `self-correcting`, m: `自分で誤りを直す`, re: `self-correcting` },
+        ],
+        ja: `いいですね。では、まず2つ目の質問からですが、それはプロンプトエンジニアリングが本当に上手であることにかかっています。LLM、つまり対話型AIに投げかける質問が鍵なんです。正しい答えを得るには、正しい質問をすること。それがプロンプトエンジニアリングです。何通りにも解釈できるあいまいな質問は、とても簡単にしてしまえます。そういう質問は、ハルシネーションを生みやすくなります。でもそれは今の話で、まだ初期段階です。1年かそこらで、AIは自分で誤りを直すようになり、今よりよくなると私は思っています。`,
+      },
+      {
+        ts: `10:27`, spk: `BC`,
+        gist: `1つ目の「AIは人を怠けさせるか」について。車のGPSと同じで、地図を持たなくなったのは怠けたとも言えるが、道案内を任せて別のことに時間を使えるようになった。AIも、これまで価値を置いてきたこと（エッセイを書くなど）を変えていく。`,
+        sents: [
+          { ck: [[`The first part of your question,`, `質問の最初の部分`], [`you know, does it make people lazy?`, `AIは人を怠け者にするか、について`]] },
+          { ck: [[`You could say the same thing,`, `同じことが言えます`], [`you know, oh, we have GPS in our cars now.`, `今は車にGPSがある、という話でも`]] },
+          { ck: [[`Does it make you lazy`, `それはあなたを怠け者にしているのか`], [`that you don't carry a map around`, `地図を持ち歩かず`], [`and pull over every ten miles`, `10マイルごとに車を止めて`], [`and check the map kind of thing?`, `地図を確認したりしない、ということが`]],
+            note: `<b>it</b> は後ろの that 以下を指します（地図を持ち歩かないことは、あなたを怠け者にしているか）。<b>pull over</b> は「車を道の脇に寄せて止める」。1マイルは約1.6キロ。` },
+          { ck: [[`Well, kind of yes,`, `まあ、ある意味ではそうですが`], [`but actually you're no longer focusing`, `でも実はもう集中していないんです`], [`on navigation.`, `道案内には`]] },
+          { ck: [[`You've outsourced that to to something else.`, `それをほかのものに任せたんです`]],
+            note: `to to は言いよどみで、to が重なっています。` },
+          { ck: [[`So maybe you listen to a podcast`, `だからポッドキャストを聞いたりする`], [`while you're driving your car.`, `車を運転しながら`]] },
+          { ck: [[`The point being is that`, `要するに`], [`you know, yes, it's going to change things`, `そう、AIは物事を変えていく`], [`that we previously applied great value to.`, `私たちがこれまで大きな価値を置いてきた`]],
+            note: `<b>The point being is that</b> は The point is that（要するに）の崩れた形。<b>apply value to</b> は「〜に価値を置く」。` },
+          { ck: [[`Writing an essay on something or whatever,`, `何かについてエッセイを書くことなど`], [`you know.`, `ね`]] },
+        ],
+        terms: [
+          { t: `lazy`, m: `怠けた`, re: `lazy` },
+          { t: `carry around`, m: `持ち歩く`, re: `carry a map around` },
+          { t: `pull over`, m: `車を脇に寄せて止める`, re: `pull over` },
+          { t: `… kind of thing`, m: `〜みたいなこと（口語）`, re: `kind of thing` },
+          { t: `navigation`, m: `道案内、ナビ`, re: `navigation` },
+          { t: `outsource`, m: `外に任せる`, re: `outsourced` },
+          { t: `the point being`, m: `要するに`, re: `The point being` },
+          { t: `previously`, m: `これまで、以前は`, re: `previously` },
+          { t: `apply value to`, m: `〜に価値を置く`, re: `applied great value to` },
+          { t: `or whatever`, m: `〜など`, re: `or whatever` },
+        ],
+        ja: `質問の最初の部分、AIは人を怠け者にするか、ですね。今は車にGPSがある、という話でも同じことが言えます。地図を持ち歩かず、10マイルごとに車を止めて地図を確認したりしないのは、怠けていることになるのか。まあ、ある意味ではそうです。でも実際には、もう道案内に集中しなくてよくなったんです。それをほかのものに任せた。だから運転しながらポッドキャストを聞いたりできる。要するに、そう、AIは、何かについてエッセイを書くことなど、私たちがこれまで大きな価値を置いてきたことを変えていく、ということです。`,
+      },
+      {
+        ts: `11:07`, spk: `BC`,
+        gist: `でも正しく使えば、AIは私たちをもっと価値のあることへ引き上げてくれる。服を縫う人が、服を作る機械を作る人やファッションデザイナーへ移ったのと同じ。服の生産がありふれたものになったことで、デザインの新しい役割が生まれた。`,
+        sents: [
+          { ck: [[`But then it elevates us`, `でもそうなると、AIは私たちを引き上げてくれます`], [`to something that's even more valuable`, `さらに価値のあるものへ`], [`and even greater,`, `さらに大きなものへ`], [`done correctly.`, `正しく使えば`]],
+            note: `<b>done correctly</b> は if it is done correctly（正しく行われれば）の省略です。` },
+          { ck: [[`As long as that technology is not --`, `その技術が〜でない限り……`], [`it's the equivalent of someone moves`, `それは人が移るのと同じことです`], [`from sewing clothes`, `服を縫うことから`], [`to, you know, building the machines`, `機械をつくることへ`], [`that make clothes,`, `服を作る`], [`for example,`, `たとえば`], [`or a fashion designer,`, `あるいはファッションデザイナーへ`], [`because we can produce so much`, `とてもたくさん作れるので`], [`in the way of clothing these days.`, `今は服というものを`]],
+            note: `<b>As long as …</b>（〜である限り）は途中で止まり、たとえ話に移っています。<b>the equivalent of someone moves</b> は本来 someone moving。<b>in the way of</b> は「〜という点で、〜として」。` },
+          { ck: [[`There's new roles around fashion design as well,`, `ファッションデザインに関わる新しい役割もあります`], [`because it's now a commoditized --`, `なぜなら今は、ありふれた……`], [`The production of clothes is a commodity.`, `服の生産はありふれた商品になったからです`]],
+            note: `<b>commodity</b> は「どこでも手に入り、差がつかない商品」。<b>commoditize</b> は「ありふれたものにする」。` },
+        ],
+        terms: [
+          { t: `elevate`, m: `引き上げる、高める`, re: `elevates` },
+          { t: `valuable`, m: `価値のある`, re: `valuable` },
+          { t: `correctly`, m: `正しく`, re: `correctly` },
+          { t: `as long as`, m: `〜である限り`, re: `As long as` },
+          { t: `the equivalent of`, m: `〜に相当するもの`, re: `the equivalent of` },
+          { t: `sew`, m: `縫う`, re: `sewing` },
+          { t: `produce`, m: `生産する`, re: `produce` },
+          { t: `in the way of`, m: `〜という点で、〜として`, re: `in the way of` },
+          { t: `commoditized`, m: `ありふれたものになった`, re: `commoditized` },
+          { t: `commodity`, m: `差のつかない商品、ありふれたもの`, re: `commodity` },
+        ],
+        ja: `でもそうなると、正しく使えば、AIは私たちを、さらに価値のある、さらに大きなことへと引き上げてくれます。その技術が……たとえば、服を縫っていた人が、服を作る機械をつくる仕事や、ファッションデザイナーに移るのと同じことです。今は服をとてもたくさん作れるので、ファッションデザインに関わる新しい役割も生まれています。服の生産は、もうありふれたものになったからです。`,
+      },
+      {
+        ts: `11:38`, spk: `BC`,
+        gist: `AIも同じことをする。これまで価値があったことをありふれたものにするが、そのぶん私たちはより高い目的、より価値の高い活動へ進む。`,
+        sents: [
+          { ck: [[`The AI is going to do the same thing.`, `AIも同じことをするでしょう`]] },
+          { ck: [[`It’s going to commoditize things`, `物事をありふれたものにします`], [`that we previously held a lot of value for.`, `私たちがこれまで大きな価値を置いていた`]] },
+          { ck: [[`But then, as you said,`, `でもそうなると、あなたがおっしゃったように`], [`we'll then elevate`, `私たちは上がっていきます`], [`to higher purpose,`, `より高い目的へ`], [`higher-value activities.`, `より価値の高い活動へ`]] },
+        ],
+        terms: [
+          { t: `commoditize`, m: `ありふれたものにする`, re: `commoditize` },
+          { t: `hold value for`, m: `〜に価値を置く`, re: `held a lot of value for` },
+          { t: `purpose`, m: `目的`, re: `purpose` },
+          { t: `higher-value`, m: `より価値の高い`, re: `higher-value` },
+        ],
+        ja: `AIも同じことをするでしょう。私たちがこれまで大きな価値を置いていたことを、ありふれたものにしていきます。でもそうなると、あなたがおっしゃったように、私たちはより高い目的、より価値の高い活動へと進んでいくんです。`,
+      },
+    ],
+  },
+  {
+    label: `パート5`, range: `11:50–14:17`,
+    paras: [
+      {
+        ts: `11:50`, spk: `HG`,
+        gist: `正しいプロンプトはひどい答えが出る確率を下げる。これは確証バイアスと同じ話。「テイラー・スウィフトが史上最高のソングライターである理由を教えて」と聞けばその理由が返ってくるが、「そう思わない人とその理由も教えて」と加えれば違う答えになる。意思決定で教えることを、プロンプトに組み込んでいる。`,
+        sents: [
+          { ck: [[`I love the thinking about the potential for --`, `〜の可能性を考えるのが大好きです`], [`because you were talking about,`, `というのも、あなたが話していたのは`], [`you know, the right prompt`, `正しいプロンプトは`], [`can mitigate the odds`, `確率を下げられる`], [`of a terrible answer.`, `ひどい答えが出る`]],
+            note: `<b>the potential for --</b> で言いかけて止め、理由の説明に移っています。<b>mitigate</b> は「和らげる、減らす」、<b>the odds of</b> は「〜の可能性、確率」。` },
+          { ck: [[`And we think about that`, `そして私たちはそれを考えます`], [`with, you know, confirmation bias, right?`, `確証バイアスと結びつけて`]],
+            note: `<b>confirmation bias</b>（確証バイアス）は、自分の考えに合う情報ばかり集めてしまう心の傾向です。` },
+          { ck: [[`If you write a prompt and you say,`, `プロンプトを書いてこう言ったら`], [`“Tell me why Taylor Swift is the greatest songwriter`, `「テイラー・スウィフトが最高のソングライターである理由を教えて`], [`who ever lived,”`, `史上」`], [`then it's going to tell you why she is.`, `AIは彼女がそうである理由を教えてくれるでしょう`]],
+            note: `<b>who ever lived</b> は「これまでに生きた中で」＝史上。<b>why she is</b> の後には the greatest songwriter が省略されています。` },
+          { ck: [[`But if you were to say`, `でももしこう言ったら`], [`"and then tell me if there's anyone`, `「それから、いるかどうか教えて`], [`who doesn't think that`, `そう思わない人が`], [`and why they don't think that."`, `そしてなぜそう思わないのかも」と`]],
+            note: `<b>if you were to say</b> は「仮にこう言ったとしたら」。` },
+          { ck: [[`Now you're going to get --`, `そうすると得られるのは……`], [`And it's literally what we teach`, `そしてそれはまさに私たちが教えていることです`], [`when we teach decision making.`, `意思決定について教えるときに`]] },
+          { ck: [[`And for how people to think about`, `そして人々が考える方法として`], [`how not to fall prey`, `どうすれば〜にとらわれないか`], [`to certain assumptions or certain biases,`, `ある種の思い込みや偏りに`], [`you're kind of building it in.`, `それを組み込んでいるようなものなんです`]],
+            note: `文法的には崩れていますが、言いたいのは「思い込みや偏りにとらわれないための考え方を、プロンプトに最初から組み込んでいる」ということです。<b>fall prey to</b> は「〜の餌食になる」。` },
+        ],
+        terms: [
+          { t: `mitigate`, m: `和らげる、減らす`, re: `mitigate` },
+          { t: `the odds of`, m: `〜の確率、可能性`, re: `the odds` },
+          { t: `confirmation bias`, m: `確証バイアス（自分の考えに合う情報ばかり集める傾向）`, re: `confirmation bias` },
+          { t: `who ever lived`, m: `史上（これまでに生きた中で）`, re: `who ever lived` },
+          { t: `if you were to`, m: `仮に〜するとしたら`, re: `if you were to` },
+          { t: `literally`, m: `文字どおり、まさに`, re: `literally` },
+          { t: `decision making`, m: `意思決定`, re: `decision making` },
+          { t: `fall prey to`, m: `〜の餌食になる、〜にとらわれる`, re: `fall prey` },
+          { t: `assumption`, m: `思い込み、前提`, re: `assumptions` },
+          { t: `bias`, m: `偏り、バイアス`, re: `biases` },
+          { t: `build in`, m: `組み込む`, re: `building it in` },
+        ],
+        ja: `その可能性について考えるのが大好きです。というのも、正しいプロンプトはひどい答えが出る確率を下げられる、という話をされていましたよね。私たちはそれを、確証バイアスと結びつけて考えます。プロンプトに「テイラー・スウィフトが史上最高のソングライターである理由を教えて」と書けば、AIは彼女がそうである理由を教えてくれるでしょう。でも「それから、そう思わない人はいるか、なぜそう思わないのかも教えて」と書いたら、今度は……。これはまさに、意思決定について教えるときに私たちが教えていることです。ある種の思い込みや偏りにとらわれないための考え方を、プロンプトに組み込んでいるようなものなんです。`,
+      },
+      {
+        ts: `12:31`, spk: `HG`,
+        gist: `10年前にリーダー向けの意思決定の講座を受けていたら、より良い決定のための技法をいろいろ教わったはずだが、中には難しいものもある。たとえば、自分の思い込みをすべて洗い出す批判的思考。思い込みはもともとほとんど無意識なので、これは難しい。`,
+        sents: [
+          { ck: [[`But it's also, you know,`, `でもそれは〜でもあって`], [`the reality is,`, `現実には`], [`if you just took a decision-making course`, `もしあなたが意思決定の講座を受けていたら`], [`as a leader ten years ago,`, `10年前にリーダーとして`], [`we would teach you all of these techniques`, `私たちはこうした技法をすべて教えたでしょう`], [`on how to make better decisions.`, `より良い決定をする方法について`]] },
+          { ck: [[`Some of them are quite challenging.`, `中にはかなり難しいものもあります`]] },
+          { ck: [[`If I say, well,`, `たとえば私が言うとします`], [`you need to engage in critical thinking,`, `批判的思考をしなさい、と`], [`let's say.`, `仮に`]] },
+          { ck: [[`You need to think about all of the assumptions`, `思い込みをすべて考えなさい`], [`you're making`, `自分がしている`], [`and surface them.`, `そしてそれを表に出しなさい`]],
+            note: `<b>surface</b> はここでは動詞で「表に出す、浮かび上がらせる」。` },
+          { ck: [[`Well, a that's a challenging thing to do.`, `でも、それは難しいことです`]],
+            note: `a は言いよどみです。` },
+          { ck: [[`Assumptions are almost inherently unconscious.`, `思い込みは、ほとんどもともと無意識のものだからです`]] },
+        ],
+        terms: [
+          { t: `decision-making course`, m: `意思決定の講座`, re: `decision-making course` },
+          { t: `technique`, m: `技法`, re: `techniques` },
+          { t: `engage in`, m: `〜に取り組む`, re: `engage in` },
+          { t: `critical thinking`, m: `批判的思考（前提を疑い、筋道立てて考えること）`, re: `critical thinking` },
+          { t: `let's say`, m: `たとえば、仮に`, re: `let's say` },
+          { t: `surface (動詞)`, m: `表に出す`, re: `surface` },
+          { t: `unconscious`, m: `無意識の`, re: `unconscious` },
+        ],
+        ja: `でも現実には、もしあなたが10年前にリーダーとして意思決定の講座を受けていたら、私たちはより良い決定をするための技法をいろいろ教えたでしょう。中にはかなり難しいものもあります。たとえば、批判的思考をしなさい、と私が言うとします。自分がしている思い込みをすべて考えて、表に出しなさい、と。でもそれは難しいことです。思い込みは、ほとんどもともと無意識のものですから。`,
+      },
+      {
+        ts: `13:01`, spk: `HG`,
+        gist: `長い時間をかけて自分の思い込みを考えても、見つかるのは一部だけ。他人の視点を借りれば少し増える。AIに「私はどんな思い込みをしているか」と聞けば、いくつか見つけてくれる。そこから、その前提は妥当か、もう当てはまらないのではないかと考えられる。`,
+        sents: [
+          { ck: [[`So even if I sit there for a long time`, `だから長い時間そこに座って`], [`and I think about`, `考えたとしても`], [`what are all the assumptions I'm making`, `自分がしている思い込みはすべて何か`], [`that are leading to this decision,`, `この決定につながっている`], [`I may get some of them.`, `見つかるのはその一部かもしれません`]],
+            note: `<b>what are all the assumptions</b> は、考える内容を疑問文の語順のまま言っています。` },
+          { ck: [[`Maybe if I'm using the perspectives of other people,`, `もしかしたら、ほかの人の視点を使えば`], [`I'll surface a bit more.`, `もう少し表に出せるでしょう`]] },
+          { ck: [[`AI can be a brilliant partner`, `AIは素晴らしいパートナーになりえます`], [`in decision making`, `意思決定において`], [`because you can ask it,`, `こう聞けるからです`], [`“Hey, what are some of the assumptions`, `「ねえ、どんな思い込みがあるかな`], [`I may be making here?”`, `ここで私がしているかもしれない」と`]] },
+          { ck: [[`And the odds,`, `そしておそらく`], [`you know, it'll find some`, `AIはいくつか見つけてくれて`], [`and go, oh yeah, you know what?`, `あなたはこう思うんです。ああ、そうだ、ねえ`]],
+            note: `<b>the odds</b> は the odds are（おそらく〜だ）の省略。<b>go</b> は口語で「（〜と）言う、思う」。主語は途中から「あなた」に変わっています。` },
+          { ck: [[`I am making that assumption.`, `確かにその思い込みをしている`]] },
+          { ck: [[`Is that a valid assumption?`, `それは妥当な前提だろうか`]] },
+          { ck: [[`Is there information suggesting`, `〜を示す情報はあるだろうか`], [`that that assumption is no longer true?`, `その前提がもう当てはまらないことを`]] },
+        ],
+        terms: [
+          { t: `lead to`, m: `〜につながる`, re: `leading to` },
+          { t: `perspective`, m: `視点`, re: `perspectives` },
+          { t: `brilliant`, m: `素晴らしい`, re: `brilliant` },
+          { t: `the odds (are)`, m: `おそらく〜だ`, re: `And the odds` },
+          { t: `go（口語）`, m: `（〜と）言う、思う`, re: `and go` },
+          { t: `you know what?`, m: `ねえ、実はね`, re: `you know what` },
+          { t: `valid`, m: `妥当な`, re: `valid` },
+          { t: `suggest`, m: `示す`, re: `suggesting` },
+        ],
+        ja: `ですから、長い時間をかけて、この決定につながっている自分の思い込みはすべて何かを考えたとしても、見つかるのはその一部かもしれません。ほかの人の視点を借りれば、もう少し表に出せるかもしれません。AIは意思決定の素晴らしいパートナーになりえます。「ねえ、ここで私がしているかもしれない思い込みには、どんなものがある？」と聞けるからです。おそらくAIはいくつか見つけてくれて、あなたは「ああ、そうだ。確かにその思い込みをしている。それは妥当な前提だろうか。その前提がもう当てはまらないことを示す情報はあるだろうか」と考えられるわけです。`,
+      },
+      {
+        ts: `13:32`, spk: `HG`,
+        gist: `何十年も「より良い決定のためにこうしなさい」と言ってきたことが、AIのように手順を補ってくれるものがあれば、ずっと簡単になる。`,
+        sents: [
+          { ck: [[`Things we told people to do`, `人々にしなさいと言ってきたことが`], [`for decades`, `何十年も`], [`to make better decisions,`, `より良い決定をするために`], [`are so much easier`, `ずっと簡単になります`], [`with something like AI`, `AIのようなものがあれば`], [`to augment the process.`, `その過程を補ってくれる`]],
+            note: `Things … decisions までが主語で、述語は are so much easier です。` },
+        ],
+        terms: [
+          { t: `for decades`, m: `何十年も`, re: `for decades` },
+          { t: `augment`, m: `補って強化する`, re: `augment` },
+          { t: `process`, m: `過程、手順`, re: `the process` },
+        ],
+        ja: `より良い決定をするために、私たちが何十年も人々にしなさいと言ってきたことが、その過程を補ってくれるAIのようなものがあれば、ずっと簡単になるんです。`,
+      },
+      {
+        ts: `13:43`, spk: `BC`,
+        gist: `今の話こそプロンプトエンジニアリング。「私の前提を検証して」と言うのがそれ。2年前は誰も知らなかった言葉だが、今後の新人向けの仕事では基本的な必須条件になる。少なくとも数年は、その学位課程もできるだろう。`,
+        sents: [
+          { ck: [[`And what you just described`, `そして今あなたが説明したことは`], [`is prompt engineering.`, `プロンプトエンジニアリングです`]] },
+          { ck: [[`You know, that's exactly it.`, `まさにそれなんです`]] },
+          { ck: [[`Telling it "validate my assumptions"`, `AIに「私の前提を検証して」と言うことが`], [`is prompt engineering.`, `プロンプトエンジニアリングです`]] },
+          { ck: [[`So it's something that was meaningless.`, `それはかつて意味のない言葉でした`]] },
+          { ck: [[`No one had heard of prompt engineering`, `プロンプトエンジニアリングなんて誰も聞いたことがなかった`], [`two years ago.`, `2年前には`]] },
+          { ck: [[`But, you know, many entry-level jobs`, `でも、多くの新人向けの仕事では`], [`that come up in the future,`, `これから出てくる`], [`I believe,`, `私が思うに`], [`this will be a fundamental prerequisite.`, `これが基本的な必須条件になるでしょう`]],
+            note: `文頭の many entry-level jobs … は「〜な仕事では」と話題を示していて、文の主語は this です。` },
+          { ck: [[`And being good at that,`, `そしてそれが上手であることについて`], [`I imagine there'll be degree courses,`, `学位課程もできるだろうと思います`], [`at least for a few years`, `少なくとも数年は`], [`until it's superseded,`, `取って代わられるまで`], [`around, you know, clever, smart, prompt engineering`, `うまく賢いプロンプトエンジニアリングについての`], [`to get the best out of that high-performing vehicle,`, `その高性能の乗り物を最大限に生かすための`], [`which is AI.`, `つまりAIを`]],
+            note: `<b>degree courses … around prompt engineering</b>（プロンプトエンジニアリングについての学位課程）の間に、「少なくとも取って代わられるまでの数年は」が挟まっています。<b>get the best out of</b> は「〜を最大限に生かす」。` },
+        ],
+        terms: [
+          { t: `describe`, m: `説明する`, re: `described` },
+          { t: `that's exactly it`, m: `まさにそれだ`, re: `that's exactly it` },
+          { t: `validate`, m: `検証する、確かめる`, re: `validate` },
+          { t: `meaningless`, m: `意味のない`, re: `meaningless` },
+          { t: `hear of`, m: `〜のことを聞く`, re: `heard of` },
+          { t: `come up`, m: `出てくる、生まれる`, re: `come up` },
+          { t: `fundamental`, m: `基本的な`, re: `fundamental` },
+          { t: `prerequisite`, m: `必須条件`, re: `prerequisite` },
+          { t: `degree course`, m: `学位課程`, re: `degree courses` },
+          { t: `supersede`, m: `取って代わる`, re: `superseded` },
+          { t: `get the best out of`, m: `〜を最大限に生かす`, re: `get the best out of` },
+          { t: `vehicle`, m: `乗り物`, re: `vehicle` },
+        ],
+        ja: `今あなたが説明したことこそ、プロンプトエンジニアリングです。まさにそれなんです。AIに「私の前提を検証して」と言うのがプロンプトエンジニアリングです。かつては意味のない言葉でした。2年前には、プロンプトエンジニアリングなんて誰も聞いたことがありませんでした。でも、これから出てくる多くの新人向けの仕事では、これが基本的な必須条件になると思います。それに長けていることについて、少なくとも別のものに取って代わられるまでの数年は、AIという高性能の乗り物を最大限に生かすための、うまく賢いプロンプトエンジニアリングの学位課程もできるだろうと思います。`,
+      },
+    ],
+  },
+  {
+    label: `パート6`, range: `14:17–17:16`,
+    paras: [
+      {
+        ts: `14:17`, spk: `HG`,
+        gist: `誰かが作った長く詳しいプロンプトをそのまま使わせるのは手っ取り早いが、もっと良いのは過程を学んでもらうこと。良いプロンプトを作るには、各部分がなぜ必要かを理解する必要があり、その途中で確証バイアスのようなことも学べる。`,
+        sents: [
+          { ck: [[`Well, and again,`, `そしてやはり`], [`it's one of those things where,`, `それは〜なことの1つです`], [`you know, there's a certain expedience`, `ある種の手っ取り早さがある`], [`to having people write mega prompts`, `誰かに巨大なプロンプトを書いてもらい`], [`and then you go,`, `そしてこう言うことには`], [`OK, here you can use my mega prompt.`, `はい、私の巨大なプロンプトを使っていいよ、と`]],
+            note: `<b>mega prompt</b> は、手順や条件を細かく書き込んだ長いプロンプトのことです。<b>expedience</b> は「手っ取り早さ、便宜」。` },
+          { ck: [[`That's fast,`, `それは速いですし`], [`I get it.`, `わかります`]] },
+          { ck: [[`But what's even better`, `でももっと良いのは`], [`is to really have people studying the process,`, `人にその過程を本当に学んでもらうことです`], [`because then you are learning.`, `そうすれば学べるからです`]] },
+          { ck: [[`In order to make a really great mega prompt`, `本当に素晴らしい巨大なプロンプトを作るには`], [`that takes me through a whole process,`, `一連の過程を通して導いてくれる`], [`I need to understand`, `理解する必要があります`], [`why each piece of that prompt was necessary.`, `そのプロンプトのそれぞれの部分がなぜ必要だったのかを`]] },
+          { ck: [[`And so along the way,`, `そしてその途中で`], [`I'm learning things like,`, `〜のようなことを学んでいる`], [`well, there's something called the confirmation bias.`, `確証バイアスというものがある、といったことを`]] },
+          { ck: [[`If you ask a question a certain way,`, `ある聞き方で質問をしたら`], [`asking for evidence for one thing,`, `一方の根拠だけを求めて`], [`that's what you're going to get, right?`, `返ってくるのはそういうものだ、と`]] },
+        ],
+        terms: [
+          { t: `expedience`, m: `手っ取り早さ、便宜`, re: `expedience` },
+          { t: `mega prompt`, m: `巨大な（長く詳しい）プロンプト`, re: `mega prompt` },
+          { t: `I get it`, m: `わかります`, re: `I get it` },
+          { t: `in order to`, m: `〜するために`, re: `In order to` },
+          { t: `take A through`, m: `Aを（過程に）沿って導く`, re: `takes me through` },
+          { t: `piece`, m: `部分`, re: `each piece` },
+          { t: `along the way`, m: `その途中で`, re: `along the way` },
+          { t: `evidence`, m: `根拠、証拠`, re: `evidence` },
+        ],
+        ja: `そしてやはり、誰かに巨大なプロンプトを書いてもらって「はい、私の巨大なプロンプトを使っていいよ」と渡すのは、ある意味で手っ取り早いですよね。速いですし、それはわかります。でももっと良いのは、人にその過程を本当に学んでもらうことです。そうすれば学べるからです。一連の過程を導いてくれる本当に素晴らしい巨大なプロンプトを作るには、そのプロンプトのそれぞれの部分がなぜ必要だったのかを理解する必要があります。そしてその途中で、確証バイアスというものがある、といったことを学んでいくんです。一方の根拠だけを求めるような聞き方をすれば、返ってくるのはそういうものだ、と。`,
+      },
+      {
+        ts: `14:54`, spk: `HG`,
+        gist: `プロンプトの書き方を教える過程で、より良い問いや情報のより深い理解に至る方法も教えられる。損失回避は脳の強い衝動で、リスクを合理的に考えるのは難しいが、良いプロンプトがあれば偏りなく考えられる。AIが代わりに決めるのではなく、見落としに気づかせてくれる。それが意思決定の未来。`,
+        sents: [
+          { ck: [[`So it's exciting for me to think about`, `だから考えるとわくわくします`], [`all the things we can teach`, `教えられるあらゆることを`], [`through the process of teaching prompting`, `プロンプトの書き方を教える過程を通して`], [`that helps people to arrive at better questions,`, `人がより良い問いにたどり着くのを助ける`], [`better and more thorough understanding of information.`, `情報をより良く、より深く理解するのを`]],
+            note: `it は to think about 以下を指します。that helps … は、プロンプトの書き方を教える過程が「より良い問いや理解に導く」と説明しています。` },
+          { ck: [[`How do we get people`, `どうすれば人に〜してもらえるか`], [`to think rationally about risk?`, `リスクについて合理的に考えて`]] },
+          { ck: [[`That's incredibly hard.`, `それはものすごく難しいことです`]] },
+          { ck: [[`Loss aversion is a very strong impulse`, `損失回避はとても強い衝動です`], [`in the brain,`, `脳の中の`], [`but through really good prompting,`, `でも本当に良いプロンプトを通して`], [`we can get people to actually think through information`, `人に情報を実際によく考えてもらえます`], [`in a much more even-handed way.`, `ずっと偏りのないやり方で`]],
+            note: `<b>loss aversion</b>（損失回避）は、同じ額でも、得ることより失うことを強く嫌う心の傾向です。` },
+          { ck: [[`So I'm very excited`, `だからとてもわくわくしています`], [`about the future of decision-making with AI,`, `AIを使った意思決定の未来に`], [`because it's not about AI making the decision for you,`, `それはAIが代わりに決めることではなく`], [`it's about it really helping you to see the things`, `AIがものごとに気づく手助けをしてくれることだから`], [`that you might be missing.`, `あなたが見落としているかもしれない`]],
+            note: `<b>it's not about A, it's about B</b> は「Aということではなく、Bということだ」。<b>AI making …</b> / <b>it helping …</b> は「AIが〜すること」（動名詞の意味上の主語）。` },
+        ],
+        terms: [
+          { t: `prompting`, m: `プロンプトを書くこと`, re: `prompting` },
+          { t: `arrive at`, m: `〜にたどり着く`, re: `arrive at` },
+          { t: `thorough`, m: `徹底した、深い`, re: `thorough` },
+          { t: `rationally`, m: `合理的に`, re: `rationally` },
+          { t: `incredibly`, m: `ものすごく`, re: `incredibly` },
+          { t: `loss aversion`, m: `損失回避（失うことを強く嫌う傾向）`, re: `Loss aversion` },
+          { t: `impulse`, m: `衝動`, re: `impulse` },
+          { t: `think through`, m: `よく考え抜く`, re: `think through` },
+          { t: `even-handed`, m: `偏りのない、公平な`, re: `even-handed` },
+        ],
+        ja: `ですから、プロンプトの書き方を教える過程を通して教えられるあらゆることを考えると、わくわくします。それは、人がより良い問いにたどり着き、情報をより良く、より深く理解する助けになります。どうすれば人にリスクを合理的に考えてもらえるか。それはものすごく難しいことです。損失回避は脳の中のとても強い衝動です。でも本当に良いプロンプトがあれば、人に情報をずっと偏りなく考え抜いてもらえます。ですから、AIを使った意思決定の未来にとてもわくわくしています。AIが代わりに決めるのではなく、あなたが見落としているかもしれないことに気づく手助けをしてくれるのですから。`,
+      },
+      {
+        ts: `15:40`, spk: `HG`,
+        gist: `未来学者ボブ・ヨハンセンが本の中で、今のAIは「博識だが自信過剰なインターンが、いつもそばにいるようなもの」と書いていて、笑ってしまったが、とてもいいたとえだと思う。`,
+        sents: [
+          { ck: [[`And treating it like the future,`, `そしてそれを未来のように扱うこと`], [`as Bob Johansen said this`, `ボブ・ヨハンセンがこう言ったように`], [`in one of his books,`, `著書の中で`], [`and it cracked me up,`, `笑ってしまったのですが`], [`but I think it's a really great analogy`, `でも本当にいいたとえだと思います`], [`that AI, at least in its current state,`, `AIは、少なくとも今の状態では`], [`is sort of like a really well-read`, `とても博識だけれど`], [`but overly confident intern`, `自信過剰なインターンのようなもので`], [`that's with you all the time.`, `いつもあなたのそばにいる`]],
+            note: `冒頭の <b>And treating it like the future</b> は文につながらないまま、ボブ・ヨハンセン（アメリカの未来学者）の話に移っています。<b>it's a … analogy that …</b> は「〜というたとえ」。<b>crack A up</b> は「Aを大笑いさせる」。` },
+          { ck: [[`And I love that idea.`, `その考え方が大好きです`]] },
+        ],
+        terms: [
+          { t: `crack A up`, m: `Aを大笑いさせる`, re: `cracked me up` },
+          { t: `analogy`, m: `たとえ`, re: `analogy` },
+          { t: `current state`, m: `今の状態`, re: `current state` },
+          { t: `well-read`, m: `博識な、本をよく読んでいる`, re: `well-read` },
+          { t: `overly confident`, m: `自信過剰な`, re: `overly confident` },
+          { t: `intern`, m: `インターン、研修生`, re: `intern` },
+        ],
+        ja: `そして、ボブ・ヨハンセンが著書の中で言っていたことですが、笑ってしまったものの、本当にいいたとえだと思います。AIは、少なくとも今の状態では、とても博識だけれど自信過剰なインターンが、いつもそばにいるようなものだ、と。その考え方が大好きなんです。`,
+      },
+      {
+        ts: `15:59`, spk: `BC`,
+        gist: `AIの良し悪しは、受けてきた訓練の良し悪しで決まる。`,
+        sents: [
+          { ck: [[`And it's only as good`, `そしてAIは〜と同じくらいにしか良くない`], [`as the training it's got.`, `受けてきた訓練`]],
+            note: `<b>be only as good as A</b> は「Aの良さ以上にはならない」。AIの質は、学習したデータや訓練の質で決まる、ということです。` },
+        ],
+        terms: [
+          { t: `only as good as`, m: `〜以上には良くならない`, re: `only as good` },
+          { t: `training`, m: `訓練、学習`, re: `training` },
+        ],
+        ja: `そして、AIの良し悪しは、受けてきた訓練の良し悪しで決まります。`,
+      },
+      {
+        ts: `16:01`, spk: `HG`,
+        gist: `そしてハンドルを握る人の良し悪しでも決まる。人間が関わり続ける部分はとても大切。AIやエージェントに任せることもあるが、少なくとも当面、人間が大きな役割を担い続けるべき最も大切な場面はどこだと思うか。`,
+        sents: [
+          { ck: [[`And as the person who, again,`, `そして、〜な人（の良し悪し）でも`], [`is sort of behind the wheel.`, `いわばハンドルを握っている`]],
+            note: `直前の BC の文の続きです（AIは、訓練と、ハンドルを握る人の良し悪しで決まる）。<b>behind the wheel</b> は「運転席にいる、主導権を握っている」。` },
+          { ck: [[`And I think`, `そして思うのは`], [`that human-in-the-loop part is so important,`, `人間が関わり続ける部分がとても大切だということ`], [`that we're still going to need people.`, `やはり人間は必要だということです`]],
+            note: `<b>human-in-the-loop</b> は、AIの処理の流れ（ループ）の中に人間の判断を入れておくことです。` },
+          { ck: [[`I mean, when you think about that,`, `つまり、それを考えるとき`], [`what are the things you think of`, `あなたが思い浮かべるのはどんなことですか`], [`that we're kind of always,`, `私たちがいつでも`], [`or at least for the foreseeable future,`, `あるいは少なくとも当面は`], [`going to want a human playing a role in?`, `人間に役割を担ってほしいと思うような`]],
+            note: `things に that 節がかかり、最後の <b>in</b> まで続きます（人間に役割を担ってほしいと思うこと）。<b>for the foreseeable future</b> は「当面は、予見できる範囲では」。` },
+          { ck: [[`Sort of like,`, `言ってみれば`], [`there’s the things we’ll let AI do`, `AIにやらせることや`], [`and that we'll let agents do,`, `エージェントにやらせることはあるけれど`], [`but where, to you,`, `でも、あなたにとって、どこが`], [`are the most important places`, `最も大切な場面ですか`], [`for humans to still actually be a big part of the equation?`, `人間が今後も実際に大きな役割を担うべき`]],
+            note: `<b>agent</b> はここでは、指示を受けて自分で作業を進めるAI（AIエージェント）のことです。<b>a big part of the equation</b> は「方程式の大きな部分」＝重要な要素。` },
+        ],
+        terms: [
+          { t: `behind the wheel`, m: `運転席にいる、主導権を握る`, re: `behind the wheel` },
+          { t: `human-in-the-loop`, m: `人間が判断に関わり続けるしくみ`, re: `human-in-the-loop` },
+          { t: `the foreseeable future`, m: `当面、予見できる将来`, re: `foreseeable future` },
+          { t: `play a role in`, m: `〜で役割を果たす`, re: `playing a role in` },
+          { t: `let A do`, m: `Aに〜させる`, re: `let AI do` },
+          { t: `agent`, m: `AIエージェント（自分で作業を進めるAI）`, re: `agents` },
+          { t: `equation`, m: `方程式、（全体を構成する）要素`, re: `equation` },
+        ],
+        ja: `そして、いわばハンドルを握っている人の良し悪しでも決まります。人間が関わり続ける部分はとても大切で、やはり人間は必要だと思います。それを考えるとき、いつでも、あるいは少なくとも当面は、人間に役割を担ってほしいと思うのは、どんなことでしょうか。AIにやらせること、エージェントにやらせることはあるけれど、あなたにとって、人間が今後も実際に大きな役割を担うべき最も大切な場面はどこですか。`,
+      },
+      {
+        ts: `16:33`, spk: `BC`,
+        gist: `人によって違うが、明らかに人とのつながりが必要な「大切な瞬間」がある。感情的な場面、共感が必要な場面、失敗が許されない重大な場面。そこでは人間が必要。`,
+        sents: [
+          { ck: [[`Very, very good question.`, `とてもいい質問です`]] },
+          { ck: [[`And, you know,`, `そして`], [`I think everyone's going to be different.`, `人によって違うと思います`]] },
+          { ck: [[`Clearly there's moments that matter,`, `明らかに大切な瞬間があります`], [`where you need that human connection.`, `人とのつながりが必要な`]] },
+          { ck: [[`You know, and it may be an emotional moment,`, `それは感情的な場面かもしれないし`], [`it may be something that requires empathy.`, `共感が必要なことかもしれない`]] },
+          { ck: [[`It could be something`, `〜なことかもしれません`], [`that's of massive significance`, `とても重大で`], [`that can't go wrong.`, `失敗が許されない`]],
+            note: `<b>of significance</b> は significant（重要な）と同じ意味です。` },
+          { ck: [[`So I think, you know,`, `だから思うのは`], [`we're going to need that moment.`, `そういう場面が必要になるということです`]] },
+        ],
+        terms: [
+          { t: `moments that matter`, m: `大切な瞬間`, re: `moments that matter` },
+          { t: `human connection`, m: `人とのつながり`, re: `human connection` },
+          { t: `emotional`, m: `感情的な`, re: `emotional` },
+          { t: `require`, m: `必要とする`, re: `requires` },
+          { t: `empathy`, m: `共感`, re: `empathy` },
+          { t: `of (massive) significance`, m: `（とても）重要な`, re: `of massive significance` },
+          { t: `go wrong`, m: `うまくいかない、失敗する`, re: `go wrong` },
+        ],
+        ja: `とてもいい質問です。人によって違うと思います。明らかに、人とのつながりが必要な大切な瞬間があります。感情的な場面かもしれないし、共感が必要なことかもしれない。とても重大で、失敗が許されないことかもしれません。ですから、そういう場面では人間が必要になると思います。`,
+      },
+      {
+        ts: `17:00`, spk: `BC`,
+        gist: `ただ面白いのは、そういう人間が関わる大切な瞬間でも、相手の人間はおそらく何らかの形でAIを活用して、超人的な力を得て、あなたの問題を助けているということ。`,
+        sents: [
+          { ck: [[`But what's interesting is`, `でも興味深いのは`], [`those moments that matter`, `そういう大切な瞬間で`], [`where there's a human,`, `人間がいる`], [`probably that human you're interacting with`, `おそらくあなたがやりとりしているその人間は`], [`is leveraging AI,`, `AIを活用している`], [`you know, in some way,`, `何らかの形で`], [`to make them superhuman,`, `自分を超人的にするために`], [`to help the problem that you have.`, `あなたが抱えている問題を助けるために`]],
+            note: `<b>what's interesting is (that)</b> の後、those moments … where there's a human で場面を示し、that human … is leveraging AI が言いたい内容です。<b>help the problem</b> は本来 help with the problem。` },
+        ],
+        terms: [
+          { t: `interact with`, m: `〜とやりとりする`, re: `interacting with` },
+          { t: `leverage`, m: `活用する`, re: `leveraging` },
+          { t: `in some way`, m: `何らかの形で`, re: `in some way` },
+          { t: `superhuman`, m: `超人的な`, re: `superhuman` },
+        ],
+        ja: `でも興味深いのは、人間が関わるそういう大切な瞬間でも、あなたがやりとりしているその人は、おそらく何らかの形でAIを活用して、自分を超人的にし、あなたの問題を助けているということです。`,
+      },
+    ],
+  },
+  {
+    label: `パート7`, range: `17:16–20:32`,
+    paras: [
+      {
+        ts: `17:16`, spk: `BC`,
+        gist: `ここまではビジネスの話。もう1つ興味深いのは、AIが私生活や人とのつながりをどう助けるか。SNSは「アルゴリズム」で個人向けにされ、多くの場合、人を孤立した孤独な深みへ引き込んでいる。心理学者としての意見を聞きたい。`,
+        sents: [
+          { ck: [[`And again,`, `そしてまた`], [`we're talking a little bit about business here.`, `ここでは少しビジネスの話をしています`]] },
+          { ck: [[`And there's kind of, the other aspect,`, `そしてもう1つの側面があって`], [`I think that really is interesting`, `本当に興味深いと思うのは`], [`is how AI is going to help people`, `AIが人をどう助けるかです`], [`in their personal lives,`, `私生活で`], [`you know, and it's --`, `そしてそれは……`], [`and that human connection and stuff.`, `人とのつながりなどです`]],
+            note: `<b>the other aspect, I think that really is interesting is …</b> は構文が混ざっています。「本当に興味深いと思うもう1つの側面は〜だ」と取ります。` },
+          { ck: [[`And so --`, `それで……`], [`I'm really interested in your opinion`, `あなたの意見をぜひ聞きたいのですが`], [`as a psychologist in this,`, `これについての心理学者としての`], [`you know, we're all familiar with "the algorithm,"`, `私たちはみな「アルゴリズム」をよく知っています`], [`you know, and the rabbit hole`, `そして「ウサギの穴」も`], [`and the fact that social media is so personalized`, `そしてSNSがあまりに個人向けにされているので`], [`that it takes people down these rabbit holes`, `人をこうしたウサギの穴に引き込んでしまうという事実も`], [`of very individualist, lonely places`, `とても個人主義的で孤独な場所という`], [`in many cases.`, `多くの場合`]],
+            note: `<b>the algorithm</b> は、SNSで各自に表示する内容を選ぶしくみのこと。<b>rabbit hole</b>（ウサギの穴）は『不思議の国のアリス』から来た言葉で、ある話題にはまって抜け出せなくなる状態を指します。<b>so … that …</b> は「とても〜なので…」。` },
+        ],
+        terms: [
+          { t: `aspect`, m: `側面`, re: `aspect` },
+          { t: `personal lives`, m: `私生活`, re: `personal lives` },
+          { t: `and stuff`, m: `〜など（口語）`, re: `and stuff` },
+          { t: `psychologist`, m: `心理学者`, re: `psychologist` },
+          { t: `be familiar with`, m: `〜をよく知っている`, re: `familiar with` },
+          { t: `algorithm`, m: `アルゴリズム（表示内容を選ぶしくみ）`, re: `algorithm` },
+          { t: `rabbit hole`, m: `はまって抜け出せなくなる深み`, re: `rabbit hole` },
+          { t: `personalized`, m: `個人向けにされた`, re: `personalized` },
+          { t: `take A down`, m: `Aを（深みへ）引き込む`, re: `takes people down` },
+          { t: `individualist`, m: `個人主義的な`, re: `individualist` },
+        ],
+        ja: `そしてまた、ここでは少しビジネスの話をしています。もう1つ本当に興味深いと思うのは、AIが私生活や人とのつながりなどで、人をどう助けるかということです。それで、これについて心理学者としてのあなたの意見をぜひ聞きたいのですが。私たちはみな「アルゴリズム」や「ウサギの穴」をよく知っています。SNSはあまりにも個人向けにされているので、多くの場合、人をとても個人主義的で孤独な深みへと引き込んでしまう、という事実もあります。`,
+      },
+      {
+        ts: `17:53`, spk: `BC`,
+        gist: `AIを使って、今のような孤独な深みではなく、気の合う人たちが現実でもオンラインでも集まって分かち合える、共有のコミュニティや「給湯室」のような場をつくれると強く期待している。`,
+        sents: [
+          { ck: [[`And you know,`, `そして`], [`I've got a strong hope`, `私は強く期待しています`], [`that we're going to use AI`, `私たちがAIを使って`], [`to create shared communities,`, `共有のコミュニティをつくることを`], [`shared water cooler-type places`, `共有の「給湯室」のような場所を`], [`of like-minded people,`, `気の合う人たちの`], [`you know, who can get together`, `集まって`], [`and share things`, `いろいろなことを分かち合える`], [`either in the real world`, `現実の世界であれ`], [`or in, you know, in virtual spaces as well,`, `仮想空間であれ`], [`rather than kind of the rabbit holes`, `ウサギの穴ではなく`], [`we find ourselves in today.`, `今日私たちがはまり込んでいる`]],
+            note: `<b>water cooler</b> は職場の給水器のこと。その周りで同僚が雑談することから、人が気軽に集まって話す場所のたとえです。` },
+        ],
+        terms: [
+          { t: `shared`, m: `共有の`, re: `shared communities` },
+          { t: `water cooler`, m: `給水器（人が集まって雑談する場所のたとえ）`, re: `water cooler` },
+          { t: `like-minded`, m: `気の合う、考えの似た`, re: `like-minded` },
+          { t: `get together`, m: `集まる`, re: `get together` },
+          { t: `virtual space`, m: `仮想空間`, re: `virtual spaces` },
+          { t: `find oneself in`, m: `気づけば〜にいる`, re: `find ourselves in` },
+        ],
+        ja: `そして私は、今日私たちがはまり込んでいるウサギの穴ではなく、気の合う人たちが現実の世界でも仮想空間でも集まって、いろいろなことを分かち合える共有のコミュニティ、共有の「給湯室」のような場所をつくるのにAIを使えると、強く期待しています。`,
+      },
+      {
+        ts: `18:13`, spk: `HG`,
+        gist: `全体として、そうなると思う。AIが私たちをより良い人間にする助けになるのは、人間特有の癖や限られた能力を、AIが補ってくれる場面だと思う。`,
+        sents: [
+          { ck: [[`I mean, I think in general`, `全体として思うのは`], [`that I believe that`, `〜だと信じています`], [`that's going to be the case.`, `そうなるだろうと`]],
+            note: `<b>be the case</b> は「事実である、そうなる」。` },
+          { ck: [[`I do feel ...`, `本当に感じるのは……`], [`To me,`, `私にとって`], [`some of the places`, `場面のいくつかは`], [`where AI can help us be better humans the most`, `AIが私たちをより良い人間にするのを最も助けられる`], [`are those places`, `〜な場面です`], [`where, for some reason or another,`, `何らかの理由で`], [`there is sort of a human quirk`, `人間特有の癖や`], [`or sort of a limited capability`, `限られた能力があって`], [`that AI can help us augment.`, `AIがそれを補う手助けをしてくれる`]],
+            note: `some of the places … the most までが主語で、are those places where … が述語です。` },
+        ],
+        terms: [
+          { t: `be the case`, m: `事実である、そうなる`, re: `the case` },
+          { t: `for some reason or another`, m: `何らかの理由で`, re: `for some reason or another` },
+          { t: `quirk`, m: `癖、特有の性質`, re: `quirk` },
+          { t: `capability`, m: `能力`, re: `capability` },
+          { t: `augment`, m: `補って強化する`, re: `augment` },
+        ],
+        ja: `全体として、そうなると私は思います。私が本当に感じるのは、AIが私たちをより良い人間にするのを最も助けられるのは、何らかの理由で、人間特有の癖や限られた能力があって、AIがそれを補う手助けをしてくれる場面だということです。`,
+      },
+      {
+        ts: `18:35`, spk: `HG`,
+        gist: `深みにはまらないための今の解決策は「スマホを置きなさい」だが、スマホはドーパミンの小さな快感をくれるものでいっぱいなので難しい。スマホを置いてほしいのは寝る前の夜だが、意志の力が最も残っていないのも夜。1日で使い切ってしまうから。`,
+        sents: [
+          { ck: [[`So right now,`, `今のところ`], [`the solution for not going down the rabbit hole`, `ウサギの穴にはまらないための解決策は`], [`is people say,`, `人が言うことです`], [`“Put your phone down.”`, `「スマホを置きなさい」と`]] },
+          { ck: [[`OK, well, that's hard, right?`, `でも、それは難しいですよね`]] },
+          { ck: [[`Because my phone is full of interesting things`, `スマホは面白いものでいっぱいだから`], [`and all kinds of things`, `そしてあらゆるもので`], [`that give me those little dopamine hits`, `ちょっとしたドーパミンの快感をくれる`], [`that I'm looking at.`, `私が見ている`]],
+            note: `<b>dopamine hit</b> は、ドーパミン（快感に関わる脳内物質）が出る小さな快感のことです。` },
+          { ck: [[`They'll also give me a lot of dopamine deficit,`, `ドーパミン不足もたくさんもたらすけれど`], [`but it'll give me those dopamine hits.`, `でもドーパミンの快感はくれる`]],
+            note: `<b>deficit</b> は「不足」。小さな快感の後に、かえって物足りなさが残ることを言っています。` },
+          { ck: [[`And very often,`, `そしてたいてい`], [`when do we want people to put their phone down?`, `人にスマホを置いてほしいのはいつでしょう`]] },
+          { ck: [[`Well, we want them to put it down at night`, `夜に置いてほしいんです`], [`because there's lots of research that shows`, `なぜなら〜を示す研究がたくさんあるから`], [`it's terrible to be on your phone`, `スマホを使うのはとても良くないと`], [`right before you try to get sleep.`, `眠ろうとする直前に`]] },
+          { ck: [[`When do we have the least willpower`, `意志の力が最も少ないのはいつか`], [`to do something like that?`, `そういうことをする`]] },
+          { ck: [[`At night.`, `夜です`]] },
+          { ck: [[`Because you have spent it.`, `使い切ってしまったからです`]] },
+        ],
+        terms: [
+          { t: `solution`, m: `解決策`, re: `solution` },
+          { t: `go down the rabbit hole`, m: `深みにはまる`, re: `going down the rabbit hole` },
+          { t: `put down`, m: `（手から）置く`, re: `Put your phone down` },
+          { t: `be full of`, m: `〜でいっぱい`, re: `full of` },
+          { t: `dopamine hit`, m: `ドーパミンが出る小さな快感`, re: `dopamine hits` },
+          { t: `deficit`, m: `不足`, re: `deficit` },
+          { t: `be on your phone`, m: `スマホを使っている`, re: `be on your phone` },
+          { t: `right before`, m: `〜の直前に`, re: `right before` },
+          { t: `willpower`, m: `意志の力`, re: `willpower` },
+          { t: `spend`, m: `使う、使い果たす`, re: `spent` },
+        ],
+        ja: `今のところ、ウサギの穴にはまらないための解決策は、「スマホを置きなさい」と言うことです。でも、それは難しいですよね。スマホには、面白いものや、ちょっとしたドーパミンの快感をくれるものがいっぱい詰まっているんですから。ドーパミン不足もたくさんもたらすけれど、快感はくれる。そして人にスマホを置いてほしいのは、たいていいつでしょう。夜です。眠ろうとする直前にスマホを使うのはとても良くないことを示す研究がたくさんあるからです。では、そういうことをする意志の力が最も残っていないのはいつか。夜です。1日のうちに使い切ってしまったからです。`,
+      },
+      {
+        ts: `19:13`, spk: `HG`,
+        gist: `意志の力は限られた資源。決断するたび、衝動を抑えるたび、メールにカッとならずにこらえるたびに、1日中使っている。だからハッピーアワーがある。1日の終わりには、それがとてもいい考えに思える。`,
+        sents: [
+          { ck: [[`Willpower is a limited resource.`, `意志の力は限られた資源です`]] },
+          { ck: [[`We all spend it all day long,`, `私たちはみな1日中それを使っています`], [`every time we make decisions,`, `決断するたびに`], [`every time we resist an impulse,`, `衝動を抑えるたびに`], [`every time someone sends you an email`, `誰かからメールが来て`], [`and you don't immediately fly off the handle.`, `すぐにカッとならずにいるたびに`]],
+            note: `<b>every time …</b> は「〜するたびに」。` },
+          { ck: [[`We're using that limited supply and ...`, `その限られた量を使っていて……`], [`I mean, this is why happy hour exists, right?`, `だからハッピーアワーがあるんですよね`]],
+            note: `<b>happy hour</b> は、夕方にお酒が割引になる時間帯のこと。意志の力を使い果たした1日の終わりには、お酒がとても魅力的に思える、という冗談です。` },
+          { ck: [[`By the end of the day,`, `1日の終わりには`], [`it seems like a really good idea.`, `それが本当にいい考えに思えるんです`]] },
+        ],
+        terms: [
+          { t: `limited resource`, m: `限られた資源`, re: `limited resource` },
+          { t: `all day long`, m: `1日中`, re: `all day long` },
+          { t: `resist`, m: `抑える、こらえる`, re: `resist` },
+          { t: `impulse`, m: `衝動`, re: `impulse` },
+          { t: `immediately`, m: `すぐに`, re: `immediately` },
+          { t: `fly off the handle`, m: `カッとなる、かんしゃくを起こす`, re: `fly off the handle` },
+          { t: `supply`, m: `蓄え、供給量`, re: `supply` },
+          { t: `happy hour`, m: `ハッピーアワー（お酒が割引になる夕方の時間帯）`, re: `happy hour` },
+        ],
+        ja: `意志の力は限られた資源です。私たちはみな、決断するたびに、衝動を抑えるたびに、誰かからメールが来てもすぐにカッとならずにいるたびに、1日中それを使っています。その限られた蓄えを使っているんです。だからハッピーアワーがあるんですよね。1日の終わりには、それが本当にいい考えに思えるんです。`,
+      },
+      {
+        ts: `19:34`, spk: `HG`,
+        gist: `AIが本当になりたい自分を助けてくれるのは、人間のパートナーのように「スマホを置きたいと思っていた時間だよ、何か別のことをしよう」と声をかけてくれる場面。1日の管理を助け、「2時間画面を見続けているから、5分元気を取り戻すことをしたら？　あなたが好きな5分の活動はこれ」と小さなヒントをくれる。`,
+        sents: [
+          { ck: [[`So I think those places`, `だから思うのは、〜な場面は`], [`where AI can really help us us be the people`, `AIが私たちを〜な人でいられるよう本当に助けてくれる`], [`we want to be`, `なりたい`], [`is where we can use it`, `AIを使える場面だということ`], [`as a almost like you would a human partner`, `人間のパートナーのように`], [`who was saying,`, `こう言ってくれる`], [`"Hey, this is really the time`, `「ねえ、まさに今が`], [`you wanted to put your phone down,`, `スマホを置きたいと思っていた時間だよ`], [`let's do something else instead."`, `代わりに何か別のことをしよう」と`]],
+            note: `<b>us us</b> と <b>as a almost</b> は言いよどみです。<b>like you would a human partner</b> は like you would use a human partner の省略（人間のパートナーを頼るように）。` },
+          { ck: [[`It's helping manage your day,`, `1日の管理を手伝ってくれて`], [`giving you little tips like,`, `こんなちょっとしたヒントをくれる`], [`"Hey, maybe you want to --`, `「ねえ、〜したらどう`], [`You've been staring at your computer screen`, `パソコンの画面をずっと見つめているよ`], [`for two hours.`, `2時間も`]] },
+          { ck: [[`Maybe you should do something for five minutes`, `5分間何かしたほうがいいかも`], [`that replenishes you`, `元気を取り戻させてくれて`], [`and puts a little bit of that gas back in the tank.`, `タンクに少しガソリンを戻してくれるようなことを`]],
+            note: `something に that 節がかかっていて、for five minutes が間に挟まっています。<b>put gas back in the tank</b> は「タンクにガソリンを戻す」＝エネルギーを補充する、というたとえです。` },
+          { ck: [[`And I happen to know that`, `それにたまたま知っているんだけど`], [`you enjoy these kinds of five-minute activities.`, `あなたはこういう5分の活動が好きだよね`]] },
+          { ck: [[`Here are some suggestions."`, `いくつか提案するね」と`]] },
+          { ck: [[`So I think it's really exciting.`, `だから本当にわくわくします`]] },
+        ],
+        terms: [
+          { t: `instead`, m: `代わりに`, re: `instead` },
+          { t: `manage`, m: `管理する`, re: `manage` },
+          { t: `stare at`, m: `じっと見つめる`, re: `staring at` },
+          { t: `replenish`, m: `補充する、元気を取り戻させる`, re: `replenishes` },
+          { t: `put gas back in the tank`, m: `タンクにガソリンを戻す（エネルギーを補充するたとえ）`, re: `gas back in the tank` },
+          { t: `happen to`, m: `たまたま〜する`, re: `happen to` },
+          { t: `suggestion`, m: `提案`, re: `suggestions` },
+        ],
+        ja: `ですから、AIが、私たちがなりたい自分でいられるよう本当に助けてくれるのは、「ねえ、まさに今がスマホを置きたいと思っていた時間だよ。代わりに何か別のことをしよう」と言ってくれる人間のパートナーのように、AIを使える場面だと思います。1日の管理を手伝って、ちょっとしたヒントをくれるんです。「ねえ、パソコンの画面を2時間も見つめているよ。5分間、元気を取り戻してエネルギーを少し補充できるようなことをしたらどう？　あなたはこういう5分の活動が好きだよね。いくつか提案するね」と。本当にわくわくします。`,
+      },
+      {
+        ts: `20:12`, spk: `HG`,
+        gist: `最善の自分でいるのに苦労する場面、死角がある場面、無意識の力が目標の追求を邪魔している場面で、最も必要な瞬間にAIが助けてくれる。それがとてもわくわくする。`,
+        sents: [
+          { ck: [[`I think those places`, `思うに、〜な場面`], [`where we struggle to be our best selves,`, `最善の自分でいるのに苦労する`], [`where we have our blind spots,`, `死角がある`], [`where maybe there are unconscious forces`, `もしかしたら無意識の力が働いていて`], [`that are undermining the pursuit of our goals,`, `目標の追求を邪魔している`], [`that AI can play a role`, `AIが役割を果たせるということ`], [`in helping us in those moments`, `そういう瞬間に私たちを助けるという`], [`where we need it most,`, `最もそれが必要な`], [`I think is so exciting.`, `それがとてもわくわくすると思います`]],
+            note: `長い1文です。those places where … が3つ並んで場面を示し、that AI can play a role … が言いたい内容、最後の I think is so exciting がそれへの感想です。<b>undermine</b> は「（土台から）むしばむ、邪魔する」。` },
+        ],
+        terms: [
+          { t: `struggle to`, m: `〜するのに苦労する`, re: `struggle to` },
+          { t: `best self`, m: `最善の自分`, re: `best selves` },
+          { t: `blind spot`, m: `死角`, re: `blind spots` },
+          { t: `unconscious`, m: `無意識の`, re: `unconscious` },
+          { t: `undermine`, m: `むしばむ、邪魔する`, re: `undermining` },
+          { t: `pursuit`, m: `追求`, re: `pursuit` },
+          { t: `play a role`, m: `役割を果たす`, re: `play a role` },
+        ],
+        ja: `最善の自分でいるのに苦労する場面、死角がある場面、もしかしたら無意識の力が目標の追求を邪魔している場面で、最も必要な瞬間にAIが私たちを助ける役割を果たせる。それがとてもわくわくすることだと思います。`,
+      },
+    ],
+  },
+  {
+    label: `パート8`, range: `20:32–23:27`,
+    paras: [
+      {
+        ts: `20:32`, spk: `BC`,
+        gist: `AIと個人向けのコンテンツについて、子どもたちとよく議論する。今は自分向けに選ばれたプレイリストがあるが、AIの時代には、実在しないアーティストの、その瞬間の自分にぴったりの音楽や映画がAIによって作られるようになる。`,
+        sents: [
+          { ck: [[`It's really cool.`, `本当にすごいですね`]] },
+          { ck: [[`It's an argument I have with my kids,`, `子どもたちとよくする議論です`], [`around AI and personalization.`, `AIと個人向けにすることについての`]] },
+          { ck: [[`And especially with art,`, `特に芸術について`], [`for example.`, `たとえば`]] },
+          { ck: [[`So you know,`, `ほら`], [`we’re all familiar with like,`, `私たちはみなよく知っています`], [`a playlist of music`, `音楽のプレイリストを`], [`that's curated for you.`, `あなた向けに選ばれた`]] },
+          { ck: [[`You know, based on what you listen to,`, `あなたが聞いているものや`], [`what you've liked,`, `気に入ったものをもとに`], [`you get a list of songs`, `曲のリストがもらえる`], [`that it predicted you'll like.`, `あなたが気に入るだろうと予測した`]] },
+          { ck: [[`In the age of AI,`, `AIの時代には`], [`you know, this will go beyond,`, `これはさらに先へ行きます`], [`there'll be music that's created for you.`, `あなたのために作られた音楽が出てくるでしょう`]] },
+          { ck: [[`You know, it's not an artist that exists,`, `実在するアーティストではなく`], [`it's just AI that's created,`, `ただAIが作ったもので`], [`it's the perfect music for you`, `あなたにぴったりの音楽です`], [`for that moment,`, `その瞬間の`], [`or even the perfect movie for you`, `あるいはあなたにぴったりの映画さえ`], [`in that moment.`, `その瞬間の`]] },
+          { ck: [[`You know, what you need at that time.`, `その時に必要なものが`]] },
+        ],
+        terms: [
+          { t: `argument`, m: `議論、言い合い`, re: `argument` },
+          { t: `personalization`, m: `個人向けにすること`, re: `personalization` },
+          { t: `playlist`, m: `プレイリスト`, re: `playlist` },
+          { t: `curate`, m: `選んで編集する`, re: `curated` },
+          { t: `based on`, m: `〜をもとに`, re: `based on` },
+          { t: `predict`, m: `予測する`, re: `predicted` },
+          { t: `go beyond`, m: `さらに先へ行く`, re: `go beyond` },
+        ],
+        ja: `本当にすごいですね。AIと個人向けにすることについては、子どもたちとよく議論になるんです。特に、たとえば芸術について。私たちはみな、自分向けに選ばれた音楽のプレイリストをよく知っています。自分が聞いているものや気に入ったものをもとに、気に入るだろうと予測された曲のリストがもらえる。AIの時代には、それがさらに先へ進んで、あなたのために作られた音楽が出てくるでしょう。実在するアーティストではなく、AIが作っただけの、その瞬間のあなたにぴったりの音楽です。あるいは、その瞬間のあなたにぴったりの映画さえも。その時に必要なものが。`,
+      },
+      {
+        ts: `21:13`, spk: `BC`,
+        gist: `自分だけのために作られた映画は究極のウサギの穴。孤独な場所で孤独な映画を見ながら、ドーパミンだけは満たされる。子どもたちの意見は「コミュニティ」。映画や曲が好きなのは、自分に合うからだけでなく、ほかの人も好きで見ているから。`,
+        sents: [
+          { ck: [[`So one of the arguments I have with my kids`, `子どもたちとの議論の1つが`], [`is quite interesting.`, `なかなか興味深いんです`]] },
+          { ck: [[`It goes to this idea of a rabbit hole,`, `それはウサギの穴の考えにつながります`], [`because the movie that's created just for you`, `なぜならあなただけのために作られた映画は`], [`at that particular time,`, `その特定の時に`], [`is the ultimate rabbit hole.`, `究極のウサギの穴だから`]] },
+          { ck: [[`You're in this lonely place`, `あなたは孤独な場所にいて`], [`watching this lonely movie created for you,`, `自分のために作られた孤独な映画を見ている`], [`but it's hitting all the dopamine you need`, `でも必要なドーパミンはすべて満たしてくれる`], [`at that time.`, `その時に`]] },
+          { ck: [[`My kids' argument,`, `子どもたちの意見は`], [`which is quite interesting,`, `なかなか興味深いのですが`], [`is the idea of community.`, `コミュニティという考えです`]] },
+          { ck: [[`And actually part of the reason`, `実は〜な理由の一部は`], [`they like a movie or like a song`, `子どもたちがある映画や曲を好きな`], [`isn't because it's good for them,`, `それが自分に合っているからではなく`], [`but they know other people like it as well,`, `ほかの人も好きだと知っていて`], [`and other people have watched it as well.`, `ほかの人も見ているからなんです`]],
+            note: `<b>not because A, but (because) B</b> は「AだからではなくBだから」。` },
+        ],
+        terms: [
+          { t: `go to`, m: `〜につながる、〜に関わる`, re: `goes to` },
+          { t: `ultimate`, m: `究極の`, re: `ultimate` },
+          { t: `hit（快感など）`, m: `満たす`, re: `hitting` },
+          { t: `part of the reason`, m: `理由の一部`, re: `part of the reason` },
+          { t: `as well`, m: `〜も`, re: `as well` },
+        ],
+        ja: `子どもたちとの議論の1つが、なかなか興味深いんです。それはウサギの穴の考え方につながります。その時のあなただけのために作られた映画は、究極のウサギの穴だからです。孤独な場所で、自分のために作られた孤独な映画を見ている。でも、その時に必要なドーパミンはすべて満たしてくれる。子どもたちの意見は、なかなか興味深いのですが、コミュニティという考え方なんです。実は、子どもたちがある映画や曲を好きな理由の一部は、それが自分に合っているからではなく、ほかの人も好きだと知っていて、ほかの人も見ているからなんです。`,
+      },
+      {
+        ts: `21:44`, spk: `BC`,
+        gist: `AIがコンテンツを作るなら、どの程度まで個人向けにするのか。個人、友人のグループ、社会、人類全体のどれに合わせるのか。`,
+        sents: [
+          { ck: [[`So what's quite interesting to me is,`, `だから私がとても興味深いと思うのは`], [`you know, if AI is going to generate content,`, `AIがコンテンツを生み出すとしたら`], [`to what degree is that personalized?`, `それはどの程度まで個人向けにされるのか`]],
+            note: `<b>to what degree</b> は「どの程度」。` },
+          { ck: [[`Is it personalized to the individual`, `個人に合わせるのか`], [`or to a group of friends`, `友人のグループにか`], [`or to a society`, `社会にか`], [`or to humankind?`, `人類にか`]] },
+        ],
+        terms: [
+          { t: `generate`, m: `生み出す`, re: `generate` },
+          { t: `content`, m: `コンテンツ、作品`, re: `content` },
+          { t: `to what degree`, m: `どの程度`, re: `to what degree` },
+          { t: `individual`, m: `個人`, re: `individual` },
+          { t: `humankind`, m: `人類`, re: `humankind` },
+        ],
+        ja: `ですから私がとても興味深いと思うのは、AIがコンテンツを生み出すとしたら、それをどの程度まで個人向けにするのか、ということです。個人に合わせるのか、友人のグループか、社会か、それとも人類全体か。`,
+      },
+      {
+        ts: `21:59`, spk: `HG`,
+        gist: `まさに社会心理学者らしい問い。社会心理学では何十年も、アイデンティティを、個人としての自分か集団としての自分かのどちらかではなく、その両方と考えてきた。人はユニークな個人であると同時に、意味のある集団に属していて、どちらも大切。`,
+        sents: [
+          { ck: [[`That's a great question.`, `いい質問です`]] },
+          { ck: [[`It's such a social psychologist question,`, `まさに社会心理学者らしい問いです`], [`because we think about --`, `というのも、私たちは〜を考えるので……`], [`When you think about identity,`, `アイデンティティについて考えるとき`], [`for decades,`, `何十年も`], [`social psychologists have thought about identity`, `社会心理学者はアイデンティティを考えてきました`], [`as being --`, `〜であると……`], [`It isn't who you are individually`, `個人としての自分か`], [`or your group identities.`, `集団としてのアイデンティティか、ではない`]],
+            note: `言いかけては言い直していますが、言いたいのは「アイデンティティは、個人としての自分か集団としての自分かのどちらか、ではない」ということです。<b>identity</b> は「自分は何者かという感覚」。` },
+          { ck: [[`It's all of those.`, `そのすべてなんです`]] },
+          { ck: [[`So you are a unique individual,`, `あなたはユニークな個人ですが`], [`but the groups to which you belong,`, `でもあなたが属している集団`], [`that are meaningful to you --`, `あなたにとって意味のある`], [`those are important as well.`, `それも大切なんです`]],
+            note: `<b>the groups to which you belong</b> は the groups you belong to と同じ（あなたが属する集団）。` },
+        ],
+        terms: [
+          { t: `social psychologist`, m: `社会心理学者`, re: `social psychologist` },
+          { t: `identity`, m: `アイデンティティ（自分は何者かという感覚）`, re: `identity` },
+          { t: `individually`, m: `個人として`, re: `individually` },
+          { t: `unique`, m: `唯一の、ほかにない`, re: `unique` },
+          { t: `belong to`, m: `〜に属する`, re: `belong` },
+          { t: `meaningful`, m: `意味のある`, re: `meaningful` },
+        ],
+        ja: `いい質問ですね。まさに社会心理学者らしい問いです。というのも、社会心理学者は何十年も、アイデンティティを、個人としての自分か集団としてのアイデンティティか、のどちらかとは考えてきませんでした。そのすべてなんです。あなたはユニークな個人ですが、あなたにとって意味のある、あなたが属している集団も大切なんです。`,
+      },
+      {
+        ts: `22:30`, spk: `HG`,
+        gist: `人によって、また文化によって揺れ動く。集団のアイデンティティのほうが大切な文化もあれば、その逆もある。1日の中でも揺れ動き、自分だけのものが欲しい瞬間もあれば、ほかの人とつながっていると感じられるものが欲しい時もある。`,
+        sents: [
+          { ck: [[`And what tends to be the case is that`, `そしてよくあるのは`], [`people fluctuate a bit`, `人が少し揺れ動くということ`], [`so it can fluctuate by culture.`, `それは文化によっても変わりうる`]] },
+          { ck: [[`So in some cultures,`, `だからある文化では`], [`your group identities tend to be more important`, `集団としてのアイデンティティのほうが大切になりがちです`], [`than your individual identity.`, `個人としてのアイデンティティより`]] },
+          { ck: [[`And vice versa.`, `そしてその逆もあります`]] },
+          { ck: [[`But I think`, `でも思うのは`], [`it's also going to move kind of,`, `それは揺れ動くということです`], [`throughout your day,`, `1日を通しても`], [`where there may be moments`, `〜な瞬間もあるかもしれない`], [`where what you're really craving`, `本当に欲しくてたまらないのが`], [`is something that is uniquely for you.`, `あなただけのためのものである`]],
+            note: `<b>crave</b> は「強く欲しがる」。where … は、1日の中のそういう瞬間を説明しています。` },
+          { ck: [[`And that's the piece you want`, `そしてそれこそ欲しいものです`], [`in that moment.`, `その瞬間に`]] },
+          { ck: [[`But I think`, `でも思うのは`], [`there's also always going to be the things`, `いつでも〜なものもあるだろうということ`], [`that you feel connect you to other people.`, `ほかの人とつながっていると感じさせてくれる`]],
+            note: `<b>the things that you feel connect you to …</b> は、that が connect の主語で、you feel が間に挟まっています（ほかの人とつなげてくれると感じるもの）。` },
+        ],
+        terms: [
+          { t: `be the case`, m: `事実である、よくある`, re: `the case` },
+          { t: `fluctuate`, m: `揺れ動く、変動する`, re: `fluctuate` },
+          { t: `tend to`, m: `〜しがちである`, re: `tend to` },
+          { t: `vice versa`, m: `その逆もまた同じ`, re: `vice versa` },
+          { t: `throughout`, m: `〜を通して`, re: `throughout` },
+          { t: `crave`, m: `強く欲しがる`, re: `craving` },
+          { t: `uniquely`, m: `〜だけのために`, re: `uniquely` },
+          { t: `connect A to B`, m: `AをBとつなぐ`, re: `connect you to` },
+        ],
+        ja: `そしてよくあるのは、人が少し揺れ動くということです。文化によっても変わりえます。ある文化では、個人としてのアイデンティティより、集団としてのアイデンティティのほうが大切になりがちです。その逆もあります。でも、1日を通しても揺れ動くと思います。本当に欲しくてたまらないのが、自分だけのためのものだという瞬間もあるでしょう。その瞬間に欲しいのはそれです。でも、ほかの人とつながっていると感じさせてくれるものも、いつでも必要とされると思います。`,
+      },
+      {
+        ts: `23:06`, spk: `HG`,
+        gist: `たぶん「どちらか」ではなく「どちらも」。自分のために作られた映画が見たい夜もあれば、もっと多くの夜は、人と分かち合えるものが欲しい。かなり流動的になると思う。`,
+        sents: [
+          { ck: [[`So it's probably an "and."`, `だからたぶん「どちらも」なんです`]],
+            note: `<b>an "and"</b> は「どちらか（or）ではなく、どちらも（and）」という意味の言い方です。` },
+          { ck: [[`It's probably "I do want some --"`, `たぶん「私は少し欲しい……」`]] },
+          { ck: [[`There may be an evening`, `〜な夜もあるかもしれません`], [`where I want the movie that was made for me.`, `自分のために作られた映画が見たい`]] },
+          { ck: [[`There may be more evenings`, `もっと多くの夜は`], [`where I want something`, `何かが欲しいかもしれない`], [`that I feel like I can share with people`, `人と分かち合えると感じられる`], [`or that others are sharing with me.`, `あるいはほかの人が私と分かち合ってくれる`]] },
+          { ck: [[`And I think`, `そして思うのは`], [`we’re going to see that it’s quite fluid,`, `それがかなり流動的になるのを目にするだろうということ`], [`because I, for one --`, `というのも、私自身……`]],
+            note: `<b>for one</b> は「少なくとも私は、私としては」。ここで言いかけて、次の話題に移っています。` },
+        ],
+        terms: [
+          { t: `fluid`, m: `流動的な、固定していない`, re: `fluid` },
+          { t: `for one`, m: `少なくとも（私は）`, re: `for one` },
+        ],
+        ja: `ですから、たぶん「どちらか」ではなく「どちらも」なんです。たぶん「私は少し欲しい……」。自分のために作られた映画が見たい夜もあるかもしれません。でも、人と分かち合えると感じられるもの、あるいはほかの人が分かち合ってくれるものが欲しい夜のほうが多いかもしれない。それはかなり流動的になると思います。というのも、私自身……`,
+      },
+    ],
+  },
+  {
+    label: `パート9`, range: `23:27–最後`,
+    paras: [
+      {
+        ts: `23:27`, spk: `HG`,
+        gist: `創造性と芸術について言えば、アーティストはすでにAIを助手として作品づくりを補っていて、これからもそうするだろう。それでも、作品の背後に人間がいることは、人間の本性として、これからもずっと大切であり続ける。`,
+        sents: [
+          { ck: [[`It’s funny that`, `面白いことに`], [`thinking about creativity and the arts,`, `創造性や芸術について考えると`], [`I do see that`, `確かに思います`], [`certainly artists are already`, `アーティストはもう〜しているし`], [`and will continue to augment their art`, `これからも作品を補い続けるだろうと`], [`through with AI as a helper.`, `AIを助手として`]],
+            note: `<b>are already and will continue to augment</b> は「すでに補っているし、これからも補い続ける」。through with は through と with が重なった言いよどみです。` },
+          { ck: [[`I do think`, `本当に思います`], [`it still matters to people,`, `それはやはり人にとって大切で`], [`and probably again, will, forever,`, `おそらくこれからもずっと大切だろうと`], [`because I think it's a human-nature thing`, `なぜならそれは人間の本性に関わることだと思うから`], [`that there is a human behind the art, right?`, `作品の背後に人間がいるということは`]],
+            note: `最初の <b>it</b> は、後ろで説明される「作品の背後に人間がいること」を指しています。<b>will</b> の後には matter が省略されています。` },
+          { ck: [[`That there's a human behind the music,`, `音楽の背後に人間がいて`], [`there's a human behind a great piece of prose`, `素晴らしい文章の背後に人間がいて`], [`or filmmaking or a designer.`, `あるいは映画づくりや、デザイナーがいる、ということは`]],
+            note: `前の文の that 節の続きです。最後の or a designer は「（デザインの背後に）デザイナーがいる」と言い換えています。` },
+        ],
+        terms: [
+          { t: `creativity`, m: `創造性`, re: `creativity` },
+          { t: `the arts`, m: `芸術`, re: `the arts` },
+          { t: `augment`, m: `補って強化する`, re: `augment` },
+          { t: `matter to`, m: `〜にとって重要である`, re: `matters to` },
+          { t: `human nature`, m: `人間の本性`, re: `human-nature` },
+          { t: `prose`, m: `散文、文章`, re: `prose` },
+          { t: `filmmaking`, m: `映画づくり`, re: `filmmaking` },
+        ],
+        ja: `面白いことに、創造性や芸術について考えると、アーティストはすでにAIを助手として作品を補っていて、これからもそうし続けるだろうと確かに思います。それでも、作品の背後に人間がいることは、やはり人にとって大切で、おそらくこれからもずっとそうだと本当に思います。それは人間の本性に関わることだと思うからです。音楽の背後に人間がいて、素晴らしい文章や映画の背後に人間がいて、デザインの背後にデザイナーがいる、ということは。`,
+      },
+      {
+        ts: `24:00`, spk: `HG`,
+        gist: `AIでたくさん補われるのは確か。人間がつくることはずっと大切だが、エレベーターの音楽のように「今の自分向けに作られたものでいい」と思う時もある。そして、意味がほかの人と共有していることから生まれる時もある。それはおそらくずっと変わらない。`,
+        sents: [
+          { ck: [[`However,`, `ただ`], [`that they'll be augmented a bunch?`, `芸術がAIでたくさん補われるかというと`], [`Certainly.`, `確かにそうなるでしょう`]],
+            note: `<b>that they'll be augmented a bunch?</b> は自分で問いを立てて、Certainly と答えています。<b>a bunch</b> は口語で「たくさん」。` },
+          { ck: [[`And I think it will always matter,`, `そしてそれはいつでも大切だと思いますが`], [`but I think there will be those moments.`, `でも〜な瞬間もあると思います`]] },
+          { ck: [[`It's like elevator music.`, `エレベーターの音楽のようなものです`]],
+            note: `<b>elevator music</b> は、エレベーターやお店で流れる、誰が作ったか気にされない背景音楽のことです。` },
+          { ck: [[`There's going to just be some times`, `ただ〜な時もあるでしょう`], [`you're like,`, `こう思う`], [`no, I just want --`, `いや、ただ……`], [`I just want the thing`, `ただ欲しいだけなんだ`], [`that was manufactured for me`, `自分向けに作られたものが`], [`right now.`, `今すぐ`]],
+            note: `<b>be like</b> は口語で「（〜と）言う、思う」。` },
+          { ck: [[`And then I think`, `そして思うのは`], [`there’ll be times`, `〜な時もあるということ`], [`where the meaning comes from --`, `意味が〜から生まれる`], [`The meaning of something comes from the sharedness`, `ものの意味が、共有されていることから生まれる`], [`with other humans.`, `ほかの人間と`]] },
+          { ck: [[`I think that's probably always going to be true.`, `それはおそらくずっと変わらないと思います`]] },
+        ],
+        terms: [
+          { t: `a bunch`, m: `たくさん（口語）`, re: `a bunch` },
+          { t: `elevator music`, m: `エレベーター音楽（誰も気に留めない背景音楽）`, re: `elevator music` },
+          { t: `be like（口語）`, m: `（〜と）思う、言う`, re: `you're like` },
+          { t: `manufacture`, m: `製造する、作る`, re: `manufactured` },
+          { t: `sharedness`, m: `共有されていること`, re: `sharedness` },
+        ],
+        ja: `ただ、芸術がAIでたくさん補われるようになるかといえば、確かにそうなるでしょう。人間がつくることはいつでも大切だと思いますが、こういう瞬間もあると思います。エレベーターの音楽のようなものです。「いや、今はただ自分向けに作られたものが欲しいだけ」と思う時もあるでしょう。そして、ものの意味が、ほかの人と共有していることから生まれる時もあると思います。それはおそらくずっと変わらないでしょう。`,
+      },
+      {
+        ts: `24:29`, spk: `BC`,
+        gist: `まったく同感。ハンバーガーが食べたい時もあれば、素敵なレストランで美しい食事をしたい時もある。人生はそうした選択でできている。AIが誰にとっても単なるファストフードにならず、生活のほかの部分と同じように正しく付き合えることを願う。`,
+        sents: [
+          { ck: [[`I think that's 100 percent.`, `100パーセントそうだと思います`]] },
+          { ck: [[`And in the same way that`, `〜と同じように`], [`sometimes we'll want a burger, you know.`, `ハンバーガーが食べたい時もある`]] },
+          { ck: [[`And other times we want like,`, `そしてほかの時には欲しくなる`], [`you know, a beautiful meal`, `美しい食事が`], [`in a really nice restaurant.`, `本当に素敵なレストランでの`]] },
+          { ck: [[`Life's about all of those choices`, `人生はそうした選択すべてでできていて`], [`and having those as well.`, `そしてそれらを持っていることでもあります`]] },
+          { ck: [[`And I'm hoping that`, `そして願っているのは`], [`AI doesn't just become fast food`, `AIがただのファストフードにならないこと`], [`for everyone.`, `誰にとっても`]] },
+          { ck: [[`And we have the right approach to it`, `そして私たちがAIに正しく向き合うこと`], [`like we do with other parts of our lives.`, `生活のほかの部分でしているように`]],
+            note: `前の文の続きで、I'm hoping that … の中身です（〜であることを願う）。<b>approach to</b> は「〜への向き合い方」。` },
+        ],
+        terms: [
+          { t: `in the same way that`, m: `〜と同じように`, re: `in the same way` },
+          { t: `be about`, m: `〜が本質である`, re: `Life's about` },
+          { t: `choice`, m: `選択`, re: `choices` },
+          { t: `fast food`, m: `ファストフード`, re: `fast food` },
+          { t: `approach to`, m: `〜への向き合い方`, re: `approach to` },
+        ],
+        ja: `100パーセントそうだと思います。ハンバーガーが食べたい時もあれば、本当に素敵なレストランで美しい食事をしたい時もあるのと同じです。人生とは、そうした選択すべてであり、それらを選べることでもあります。AIが誰にとっても単なるファストフードにならず、生活のほかの部分と同じように、私たちがAIに正しく向き合えることを願っています。`,
+      },
+      {
+        ts: `24:53`, spk: `HG`,
+        gist: `お礼。とても楽しかった。話し出すと止まらない話題。今AIでしていることの最前線にいるだけでなく、将来AIで何をするかを深く考えている人と話せてよかった。`,
+        sents: [
+          { ck: [[`Well, Barry,`, `バリーさん`], [`I just want to thank you so much.`, `本当にありがとうございました`]] },
+          { ck: [[`This was so much fun.`, `とても楽しかったです`]] },
+          { ck: [[`This is one of these topics`, `これは〜な話題の1つです`], [`I can't stop talking about.`, `話し出すと止まらない`]] },
+          { ck: [[`But it was really great`, `でも本当によかったです`], [`to be able to talk to someone`, `〜な人と話せて`], [`who is not only at the forefront`, `最前線にいるだけでなく`], [`of what we are doing today with AI,`, `今私たちがAIでしていることの`], [`but someone who's thinking so deeply`, `とても深く考えている人と`], [`about what we're going to be doing with it`, `AIで何をすることになるかについて`], [`in the future.`, `将来`]],
+            note: `<b>not only A but (also) B</b> は「AだけでなくBも」。` },
+        ],
+        terms: [
+          { t: `can't stop doing`, m: `〜するのが止まらない`, re: `can't stop` },
+          { t: `forefront`, m: `最前線`, re: `forefront` },
+          { t: `not only A but B`, m: `AだけでなくBも`, re: `not only` },
+        ],
+        ja: `バリーさん、本当にありがとうございました。とても楽しかったです。これは話し出すと止まらない話題の1つです。今私たちがAIでしていることの最前線にいるだけでなく、将来AIで何をすることになるかを深く考えている方とお話しできて、本当によかったです。`,
+      },
+      {
+        ts: `25:11`, spk: `BC`,
+        gist: `お礼。行動心理学の専門家と話せてよかった。AIの波が押し寄せ、それが人にとって何を意味するか、興味深い年月になる。あなたにも面白い仕事が待っている。`,
+        sents: [
+          { ck: [[`It's a pleasure,`, `こちらこそ光栄です`], [`and thank you, Heidi.`, `ありがとう、ハイディさん`]] },
+          { ck: [[`It's really good to speak`, `お話しできて本当によかったです`], [`to an expert in behavioral psychology.`, `行動心理学の専門家と`]] },
+          { ck: [[`And I think`, `そして思うのは`], [`it’s going to be interesting years ahead`, `これから興味深い年月になるだろうということ`], [`as the AI wave hits`, `AIの波が押し寄せ`], [`and what it means for people.`, `それが人にとって何を意味するのか`]],
+            note: `<b>and what it means for people</b> は文法的にはつながりが崩れていて、「AIの波が来ること、そしてそれが人にとって何を意味するかという点で」と取ります。` },
+          { ck: [[`So you've got some interesting work ahead.`, `だからあなたには面白い仕事が待っていますね`]] },
+          { ck: [[`Thank you for your time.`, `お時間をありがとうございました`]] },
+        ],
+        terms: [
+          { t: `It's a pleasure`, m: `こちらこそ光栄です`, re: `It's a pleasure` },
+          { t: `behavioral psychology`, m: `行動心理学`, re: `behavioral psychology` },
+          { t: `ahead`, m: `この先に`, re: `ahead` },
+          { t: `hit（波などが）`, m: `押し寄せる`, re: `hits` },
+        ],
+        ja: `こちらこそ光栄です。ありがとう、ハイディさん。行動心理学の専門家とお話しできて本当によかったです。AIの波が押し寄せ、それが人にとって何を意味するのか、これから興味深い年月になると思います。あなたには面白い仕事が待っていますね。お時間をありがとうございました。`,
+      },
+      {
+        ts: `25:27`, spk: `HG`,
+        gist: `締めくくり。2人ともやることがたくさんある。`,
+        sents: [
+          { ck: [[`I think we'll both have lots to do.`, `2人ともやることがたくさんありそうですね`]] },
+          { ck: [[`Thanks.`, `ありがとうございました`]] },
+        ],
+        terms: [],
+        ja: `2人ともやることがたくさんありそうですね。ありがとうございました。`,
+      },
+      {
+        ts: `25:30`, spk: `BC`,
+        gist: `あいさつ。`,
+        sents: [
+          { ck: [[`Cheers.`, `どうも`]],
+            note: `<b>Cheers</b> はイギリス英語でよく使う、くだけた「ありがとう、じゃあね」です。` },
+        ],
+        terms: [
+          { t: `Cheers`, m: `ありがとう、じゃあね（イギリス英語のくだけた言い方）`, re: `Cheers` },
+        ],
+        ja: `どうも、ありがとう。`,
+      },
+    ],
+  },
+];
+
+/* ---------- state (this browser only) ---------- */
+const KEY = 'morehuman-prep.v1';
+const LS = {
+  get() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } },
+  set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} },
+};
+const st = Object.assign({ view: 'chunk', hideJa: false, part: 0 }, LS.get());
+if (!(st.part >= 0 && st.part < PARTS.length)) st.part = 0;
+const save = () => LS.set({ view: st.view, hideJa: st.hideJa, part: st.part });
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/* underline glossary terms inside one chunk of English (chunk view only) */
+function markTerms(text, terms, prefix) {
+  const hits = [];
+  terms.forEach((t, ti) => {
+    const re = new RegExp('\\b' + reEsc(t.re) + '\\b', 'gi');
+    let m;
+    while ((m = re.exec(text))) hits.push({ a: m.index, b: m.index + m[0].length, ti });
+  });
+  hits.sort((x, y) => x.a - y.a || (y.b - y.a) - (x.b - x.a));
+  let out = '', pos = 0;
+  for (const h of hits) {
+    if (h.a < pos) continue;
+    out += esc(text.slice(pos, h.a));
+    out += '<span class="term" data-term="' + prefix + '-' + h.ti + '" role="button" tabindex="0">' + esc(text.slice(h.a, h.b)) + '</span>';
+    pos = h.b;
+  }
+  return out + esc(text.slice(pos));
+}
+
+function paraHead(p) {
+  return '<div class="para-head"><span class="ts">' + p.ts + '</span><span class="spk ' + (SPK[p.spk] || '') + '">' + p.spk + '</span></div>';
+}
+function chunkPara(p, key) {
+  const sents = p.sents.map(s =>
+    '<div class="sent"><div class="chunks">' + s.ck.map(c =>
+      '<span class="ck" tabindex="0"><span class="en">' + markTerms(c[0], p.terms, key) + '</span><span class="ja">' + esc(c[1]) + '</span></span>').join('') + '</div>' +
+      (s.note ? '<p class="note">' + s.note + '</p>' : '') + '</div>').join('');
+  const terms = p.terms.length ? '<details class="tr terms-box"><summary>語句（' + p.terms.length + '）</summary><ul class="term-list">' + p.terms.map(t =>
+    '<li class="term-item"><span class="t">' + esc(t.t) + '</span><span class="m">' + esc(t.m) + '</span></li>').join('') + '</ul></details>' : '';
+  return paraHead(p) +
+    '<p class="gist"><small>要旨</small>' + esc(p.gist) + '</p>' +
+    '<div class="sents">' + sents + '</div>' + terms +
+    '<details class="tr"><summary>自然な日本語訳（確認用）</summary><p>' + esc(p.ja) + '</p></details>';
+}
+function plainPara(p) {
+  return paraHead(p) + '<p class="plain">' + esc(p.sents.map(s => s.ck.map(c => c[0]).join(' ')).join(' ')) + '</p>';
+}
+
+function render() {
+  const part = PARTS[st.part];
+  $('#main').innerHTML = '<h2 class="part-title">' + part.label + '　' + part.range + '</h2>' + part.paras.map((p, pi) => {
+    const key = st.part + '-' + pi;
+    return '<section class="para" id="p' + key + '">' + (st.view === 'chunk' ? chunkPara(p, key) : plainPara(p)) + '</section>';
+  }).join('');
+  $('#nextText').textContent = '通し読みでこのパートが前から読めるようになったら、TEDの音声で ' + part.range + ' をスクリプトなしで聞きます。聞きながら意味が追えない箇所があれば、その段落のかたまり読みに戻ります。';
+  syncBar();
+}
+
+$('#partSel').innerHTML = PARTS.map((p, i) => '<option value="' + i + '">' + p.label + '　' + p.range + '</option>').join('');
+$('#partSel').addEventListener('change', e => switchPart(+e.target.value));
+function syncBar() {
+  $('#partSel').value = String(st.part);
+  $('#pnPrev').disabled = st.part === 0;
+  $('#pnNext').disabled = st.part === PARTS.length - 1;
+  const nx = PARTS[st.part + 1];
+  $('#nextPart').hidden = !nx;
+  if (nx) $('#nextPart').textContent = '次のパートへ：' + nx.label + '　' + nx.range;
+  $$('[data-view]').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === st.view ? 'true' : 'false'));
+  const hj = $('#hideJa');
+  hj.setAttribute('aria-pressed', st.hideJa ? 'true' : 'false');
+  hj.hidden = st.view !== 'chunk';
+  document.body.classList.toggle('hide-ja', st.hideJa && st.view === 'chunk');
+  $('#closeAll').hidden = !(st.hideJa && st.view === 'chunk' && document.querySelector('.ck.open'));
+}
+
+/* keep the same paragraph in place when switching views */
+function barBottom() { return $('.bar').getBoundingClientRect().bottom; }
+function topPara() {
+  const b = barBottom();
+  for (const el of $$('.para')) { const r = el.getBoundingClientRect(); if (r.bottom > b + 12) return { id: el.id, off: r.top - b }; }
+  return null;
+}
+function switchView(view) {
+  if (view === st.view) return;
+  const a = topPara();
+  st.view = view; save(); hidePop(); render();
+  if (!a) return;
+  const el = document.getElementById(a.id); if (!el) return;
+  const want = barBottom() + Math.max(8, a.off);
+  window.scrollBy(0, el.getBoundingClientRect().top - want);
+}
+function switchPart(i) {
+  if (!(i >= 0 && i < PARTS.length) || i === st.part) return;
+  st.part = i; save(); hidePop(); render();
+  const main = $('#main');
+  const y = window.scrollY + main.getBoundingClientRect().top - $('.bar').offsetHeight - 4;
+  if (window.scrollY > y) window.scrollTo(0, y);
+}
+
+/* ---------- popover ---------- */
+function showTerm(id) {
+  const [pt, pi, ti] = id.split('-').map(Number);
+  const t = PARTS[pt].paras[pi].terms[ti];
+  $('#popT').textContent = t.t;
+  $('#popM').textContent = t.m;
+  $('#pop').hidden = false;
+}
+function hidePop() { $('#pop').hidden = true; }
+$('#popX').addEventListener('click', hidePop);
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const term = e.target.closest('[data-term]');
+  if (term) { e.stopPropagation(); showTerm(term.dataset.term); return; }
+  if (!e.target.closest('#pop')) hidePop();
+
+  const sb = e.target.closest('[data-step]');
+  if (sb) { switchPart(st.part + (+sb.dataset.step)); return; }
+  const v = e.target.closest('[data-view]');
+  if (v) { switchView(v.dataset.view); return; }
+
+  if (e.target.closest('#hideJa')) { st.hideJa = !st.hideJa; save(); $$('.ck.open').forEach(c => c.classList.remove('open')); syncBar(); return; }
+  if (e.target.closest('#closeAll')) { $$('.ck.open').forEach(c => c.classList.remove('open')); syncBar(); return; }
+
+  const ck = e.target.closest('.ck');
+  if (ck && st.hideJa) { ck.classList.toggle('open'); syncBar(); }
+});
+document.addEventListener('keydown', e => {
+  const t = e.target;
+  if ((e.key === 'Enter' || e.key === ' ') && t.matches && t.matches('[data-term]')) { e.preventDefault(); showTerm(t.dataset.term); return; }
+  if ((e.key === 'Enter' || e.key === ' ') && t.classList && t.classList.contains('ck') && st.hideJa) { e.preventDefault(); t.classList.toggle('open'); syncBar(); return; }
+  if (e.key === 'Escape') hidePop();
+});
+
+render();
+})();
+</script>
+
+</body></html>
